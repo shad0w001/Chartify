@@ -1,25 +1,36 @@
 ﻿using Chartify.Data;
+using Chartify.Models;
 using Chartify.Services;
 using Chartify.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Chartify.Controllers
 {
     public class ChartSetController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         public ChartSetServices Services { get; set; }
 
-        public ChartSetController(ApplicationDbContext context, ChartSetServices services)
+        public ChartSetController(ApplicationDbContext context,
+            ChartSetServices services,
+            UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
             Services = services;
-
         }
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            List<ChartSetViewModel> chartests = Services.GetAll();
+
+            return View(chartests);
         }
 
         [HttpGet]
@@ -29,11 +40,12 @@ namespace Chartify.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ChartSetViewModel model)
+        public async Task<IActionResult> Create(ChartSetViewModel model, IFormFile file)
         {
-            await Services.CreateAsync(model);
+            string currentUserId = _userManager.GetUserId(User);
+            await Services.CreateAsync(model, file, currentUserId);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -73,9 +85,9 @@ namespace Chartify.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(ChartSetViewModel model)
+        public async Task<IActionResult> Update(ChartSetViewModel model, IFormFile file)
         {
-            await Services.UpdateAsync(model);
+            await Services.UpdateAsync(model, file);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

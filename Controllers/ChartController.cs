@@ -19,7 +19,9 @@ namespace Chartify.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            List<ChartViewModel> charts = new List<ChartViewModel>();
+
+            return View(charts);
         }
 
         [HttpGet]

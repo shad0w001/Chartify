@@ -27,6 +27,7 @@ builder.Services.AddIdentity<User, Role>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+builder.Services.AddTransient<ChartServices, ChartServices>();
 builder.Services.AddTransient<ChartSetServices, ChartSetServices>();
 builder.Services.AddTransient<UserServices, UserServices>();
 

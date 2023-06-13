@@ -2,6 +2,8 @@
 using Chartify.Interfaces;
 using Chartify.Models;
 using Chartify.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using System;
 using System.Runtime.InteropServices;
 
@@ -33,39 +35,45 @@ namespace Chartify.Services
                 Charts = chartset.Charts
             }).ToList();
         }
-        public async Task CreateAsync(ChartSetViewModel model, IFormFile file)
+        public async Task CreateAsync(ChartSetViewModel model, IFormFile file, string currentUserId)
         {
+            User? user = _context.Users.FindAsync(currentUserId).Result;
+
             ChartSet chartset = new()
             {
                 Id = Guid.NewGuid().ToString(),
                 Artist = model.Artist,
                 Title = model.Title,
                 Description = model.Description,
-                CreatorId = model.CreatorId,
-                Creator = model.Creator,
-                CreationDate = model.CreationDate,
+                CreatorId = currentUserId,
+                CreationDate = DateTime.Now,
                 Status = 0,
                 PlayCount = 0,
                 Charts = new List<Chart>()
             };
 
-            if(file != null)
+            if (user != null)
             {
-                chartset.CoverPath = UploadCover(model, file).ToString();
+                chartset.Creator = user;
             }
-            
+
+            if (file != null)
+            {
+                chartset.CoverPath = UploadCover(chartset, file).ToString();
+            }
+
             await _context.ChartSets.AddAsync(chartset);
             await _context.SaveChangesAsync();
         }
-        public async Task<string> UploadCover(ChartSetViewModel model, IFormFile file)
+        public async Task<string> UploadCover(ChartSet chartset, IFormFile file)
         {
-            var folderPath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{model.Id}");
+            var folderPath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{chartset.CreatorId}\{chartset.Id}");
             if(!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
 
-            var filePath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{model.Id}", model.Id + "_" + file.FileName);
+            var filePath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{chartset.CreatorId}\{chartset.Id}", chartset.Id + "_setcover" + $"{Path.GetExtension(file.FileName)}");
             using var fileStream = new FileStream(filePath, FileMode.Create);
             await file.CopyToAsync(fileStream);
             return filePath;
@@ -108,7 +116,7 @@ namespace Chartify.Services
 
                 if (file != null)
                 {
-                    chartset.CoverPath = UploadCover(model, file).ToString();
+                    chartset.CoverPath = UploadCover(chartset, file).ToString();
                 }
 
                 _context.ChartSets.Update(chartset);

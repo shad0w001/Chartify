@@ -45,10 +45,16 @@ namespace Chartify.Data
             builder.Entity<Role>().HasData(roles);
 
             //adding an admin user
+
+            string defaultPfpPath = "Users/ProfilePictures/default.png";
+            string defaultBannerPath = "Users/ProfileBanners/default.png";
+
             var adminUser = new User();
 
             adminUser.UserName = "shad0w";
             adminUser.Email = "a@admin.com";
+            adminUser.ProfilePicturePath = defaultPfpPath;
+            adminUser.ProfileBannerPath = defaultBannerPath;
             adminUser.CreationDate = DateTime.Now;
             adminUser.LastLoginDate = DateTime.Now;
             adminUser.EmailConfirmed = true;
@@ -62,6 +68,8 @@ namespace Chartify.Data
 
             regularUser.UserName = "onegai";
             regularUser.Email = "u@user.com";
+            regularUser.ProfilePicturePath = defaultPfpPath;
+            regularUser.ProfileBannerPath = defaultBannerPath;
             regularUser.CreationDate = DateTime.Now;
             regularUser.LastLoginDate = DateTime.Now;
             regularUser.EmailConfirmed = true;
@@ -75,6 +83,8 @@ namespace Chartify.Data
 
             faUser.UserName = "namirin";
             faUser.Email = "fa@arist.com";
+            faUser.ProfilePicturePath = defaultPfpPath;
+            faUser.ProfileBannerPath = defaultBannerPath;
             faUser.CreationDate = DateTime.Now;
             faUser.LastLoginDate = DateTime.Now;
             faUser.EmailConfirmed = true;
@@ -88,6 +98,8 @@ namespace Chartify.Data
 
             mapperUser.UserName = "Sotarks";
             mapperUser.Email = "m@mapper.com";
+            mapperUser.ProfilePicturePath = defaultPfpPath;
+            mapperUser.ProfileBannerPath = defaultBannerPath;
             mapperUser.CreationDate = DateTime.Now;
             mapperUser.LastLoginDate = DateTime.Now;
             mapperUser.EmailConfirmed = true;

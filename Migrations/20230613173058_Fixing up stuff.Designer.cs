@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chartify.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230611145915_Initial")]
-    partial class Initial
+    [Migration("20230613173058_Fixing up stuff")]
+    partial class Fixingupstuff
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -142,6 +142,36 @@ namespace Chartify.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8b41ab70-a495-41c3-a7f3-1437c3326150",
+                            ConcurrencyStamp = "59ad3e8a-8e9f-4a08-9f09-d4fd88ef3b35",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "d92019bb-20cf-4bce-9845-35528c5e464d",
+                            ConcurrencyStamp = "6c0ee63b-8d87-4dc1-b0f6-c1868cead2ae",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = "979f6b9f-f0b0-49be-8683-ba7831df8e26",
+                            ConcurrencyStamp = "2ba64e3b-4096-4229-83df-d92069580c6c",
+                            Name = "Featured Artist",
+                            NormalizedName = "FEATURED ARTIST"
+                        },
+                        new
+                        {
+                            Id = "3cc9bbc4-50b4-4d6f-87aa-ce59b4db9901",
+                            ConcurrencyStamp = "35892a6d-6534-4152-9b1b-efe06975fc64",
+                            Name = "Mapper",
+                            NormalizedName = "MAPPER"
+                        });
                 });
 
             modelBuilder.Entity("Chartify.Models.User", b =>
@@ -221,6 +251,88 @@ namespace Chartify.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "4ee98ffa-0281-4866-a596-02579bb828dd",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c46135cd-eeb3-4b47-a74b-8d77ffb5f0bf",
+                            CreationDate = new DateTime(2023, 6, 13, 20, 30, 57, 947, DateTimeKind.Local).AddTicks(4375),
+                            Email = "a@admin.com",
+                            EmailConfirmed = true,
+                            LastLoginDate = new DateTime(2023, 6, 13, 20, 30, 57, 947, DateTimeKind.Local).AddTicks(4422),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "A@ADMIN.COM",
+                            NormalizedUserName = "SHAD0W",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOCYnbDBSF7mtBAOC3S3LQAA/Yqnym419S3byXsO0XLNwrN+BlQoUBaeVeOfGmvQZw==",
+                            PhoneNumberConfirmed = false,
+                            ProfileBannerPath = "Users/ProfileBanners/default.png",
+                            ProfilePicturePath = "Users/ProfilePictures/default.png",
+                            SecurityStamp = "afa509a4-24ca-4ece-99f0-582968ff21e9",
+                            TwoFactorEnabled = false,
+                            UserName = "shad0w"
+                        },
+                        new
+                        {
+                            Id = "7b52428e-de63-4ecc-b961-4f69dfc84774",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "312779f3-189a-4891-8e2a-c2d26d6a6d42",
+                            CreationDate = new DateTime(2023, 6, 13, 20, 30, 57, 951, DateTimeKind.Local).AddTicks(1501),
+                            Email = "u@user.com",
+                            EmailConfirmed = true,
+                            LastLoginDate = new DateTime(2023, 6, 13, 20, 30, 57, 951, DateTimeKind.Local).AddTicks(1565),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "U@USER.COM",
+                            NormalizedUserName = "ONEGAI",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBT6idZPV8M2oTD2wi1b0RXk1FGhUQZPkwoYGo7mtSOSaenskQlVbZoWcdVbY28GHg==",
+                            PhoneNumberConfirmed = false,
+                            ProfileBannerPath = "Users/ProfileBanners/default.png",
+                            ProfilePicturePath = "Users/ProfilePictures/default.png",
+                            SecurityStamp = "1d232201-ad16-41bb-9886-848069789fa3",
+                            TwoFactorEnabled = false,
+                            UserName = "onegai"
+                        },
+                        new
+                        {
+                            Id = "29b7ff78-c5f4-4015-a0b7-ec8cf5f533c8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "76612f4a-680d-46c1-93fa-e34b45f22d59",
+                            CreationDate = new DateTime(2023, 6, 13, 20, 30, 57, 954, DateTimeKind.Local).AddTicks(1550),
+                            Email = "fa@arist.com",
+                            EmailConfirmed = true,
+                            LastLoginDate = new DateTime(2023, 6, 13, 20, 30, 57, 954, DateTimeKind.Local).AddTicks(1602),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "FA@ARIST.COM",
+                            NormalizedUserName = "NAMIRIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDJ23340mLJQtneib0mfp4lRoQcH20hNkJRmu40NZLArxhevEt70pwtCb3Fe5sv+mg==",
+                            PhoneNumberConfirmed = false,
+                            ProfileBannerPath = "Users/ProfileBanners/default.png",
+                            ProfilePicturePath = "Users/ProfilePictures/default.png",
+                            SecurityStamp = "ded40d02-502d-414f-9d59-cc163b72f5e5",
+                            TwoFactorEnabled = false,
+                            UserName = "namirin"
+                        },
+                        new
+                        {
+                            Id = "08c49b9d-3dcb-4a2d-9d4b-686d2f3f2e14",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "398d1cbb-374f-4af2-b767-ce5bc6708da1",
+                            CreationDate = new DateTime(2023, 6, 13, 20, 30, 57, 957, DateTimeKind.Local).AddTicks(876),
+                            Email = "m@mapper.com",
+                            EmailConfirmed = true,
+                            LastLoginDate = new DateTime(2023, 6, 13, 20, 30, 57, 957, DateTimeKind.Local).AddTicks(930),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "M@MAPPER.COM",
+                            NormalizedUserName = "SOTARKS",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJT3KvUMDJ4C2REkaHUJj6YPEkbVsWsZAIkhweyU9oowGhuIHgjWJxYOG/Ct9MQ5XQ==",
+                            PhoneNumberConfirmed = false,
+                            ProfileBannerPath = "Users/ProfileBanners/default.png",
+                            ProfilePicturePath = "Users/ProfilePictures/default.png",
+                            SecurityStamp = "b122e5d2-311e-4e61-9fe1-7c9f8931071b",
+                            TwoFactorEnabled = false,
+                            UserName = "Sotarks"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -276,12 +388,10 @@ namespace Chartify.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -310,6 +420,28 @@ namespace Chartify.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "4ee98ffa-0281-4866-a596-02579bb828dd",
+                            RoleId = "8b41ab70-a495-41c3-a7f3-1437c3326150"
+                        },
+                        new
+                        {
+                            UserId = "7b52428e-de63-4ecc-b961-4f69dfc84774",
+                            RoleId = "d92019bb-20cf-4bce-9845-35528c5e464d"
+                        },
+                        new
+                        {
+                            UserId = "29b7ff78-c5f4-4015-a0b7-ec8cf5f533c8",
+                            RoleId = "979f6b9f-f0b0-49be-8683-ba7831df8e26"
+                        },
+                        new
+                        {
+                            UserId = "08c49b9d-3dcb-4a2d-9d4b-686d2f3f2e14",
+                            RoleId = "3cc9bbc4-50b4-4d6f-87aa-ce59b4db9901"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -318,12 +450,10 @@ namespace Chartify.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
