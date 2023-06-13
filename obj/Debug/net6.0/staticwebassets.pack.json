@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\Chartify.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\default.png",
+      "PackagePath": "staticwebassets\\Users\\ProfileBanners\\default.png"
+    },
+    {
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfilePictures\\default.png",
+      "PackagePath": "staticwebassets\\Users\\ProfilePictures\\default.png"
+    },
+    {
       "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

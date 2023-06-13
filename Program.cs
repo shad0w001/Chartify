@@ -1,5 +1,6 @@
 using Chartify.Data;
 using Chartify.Models;
+using Chartify.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +27,8 @@ builder.Services.AddIdentity<User, Role>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-//builder.Services.AddTransient<UserServices, UserServices>();
+builder.Services.AddTransient<ChartSetServices, ChartSetServices>();
+builder.Services.AddTransient<UserServices, UserServices>();
 
 //make it so password doesn't need symbols
 builder.Services.Configure<IdentityOptions>(options =>

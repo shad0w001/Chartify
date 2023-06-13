@@ -24,6 +24,7 @@ namespace Chartify.Data
             base.OnModelCreating(builder);
             builder.Entity<ChartsOfSets>().HasNoKey();
             builder.Entity<Chart>().Property(c => c.Duration).HasColumnType("time");
+            builder.Seed();
         }
     }
 }

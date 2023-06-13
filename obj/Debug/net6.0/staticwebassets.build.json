@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TuphKgbzURGpK2Nhjagh5nnr3LlVboPKrRgFEhEdKs8=",
+  "Hash": "9A+HQdnvQBbtlmFupV1cZDIS/rp+1ioRqiiP2vaE9GQ=",
   "Source": "Chartify",
   "BasePath": "_content/Chartify",
   "Mode": "Default",
@@ -2089,6 +2089,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\default.png",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "Users/ProfileBanners/default.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Users\\ProfileBanners\\default.png"
+    },
+    {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfilePictures\\default.png",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "Users/ProfilePictures/default.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Users\\ProfilePictures\\default.png"
     }
   ]
 }

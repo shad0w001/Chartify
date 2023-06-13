@@ -1,0 +1,55 @@
+﻿@model List<Chartify.Models.User>
+
+@{
+    ViewData["Title"] = "All Users";
+}
+
+<h1>Index</h1>
+<form action="/u/index">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Creation Date</th>
+                <th>Last Login</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.ProfilePicturePath" alt="ProfilePicture">
+                        <a class="text-dark" asp-action="profile" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.UserName)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @if(ViewBag.UserRoles != null)
+                        {
+                            @foreach (var userRole in ViewBag.UserRoles)
+                            {
+                                @foreach (var role in userRole.Value)
+                                {
+                                    if (userRole.Key == item.UserName)
+                                    {
+                                        <p>@role</p>
+                                    }
+                                }
+                            }
+                        }                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastLoginDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
