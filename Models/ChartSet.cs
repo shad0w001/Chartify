@@ -14,7 +14,6 @@ namespace Chartify.Models
         public string CreatorId { get; set; }
         public virtual User Creator { get; set; }
         public DateTime CreationDate { get; set; }
-        public int Status { get; set; }
         public int PlayCount { get; set; }
         public List<Chart> Charts { get; set; } = new List<Chart>();
     }

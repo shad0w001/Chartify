@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using System;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace Chartify.Services
 {
@@ -30,7 +31,6 @@ namespace Chartify.Services
                 CreatorId = chartset.CreatorId,
                 Creator = chartset.Creator,
                 CreationDate = chartset.CreationDate,
-                Status = chartset.Status,
                 PlayCount = chartset.PlayCount,
                 Charts = chartset.Charts
             }).ToList();
@@ -47,7 +47,6 @@ namespace Chartify.Services
                 Description = model.Description,
                 CreatorId = currentUserId,
                 CreationDate = DateTime.Now,
-                Status = 0,
                 PlayCount = 0,
                 Charts = new List<Chart>()
             };
@@ -90,7 +89,6 @@ namespace Chartify.Services
                 CreatorId = chartset.CreatorId,
                 Creator = chartset.Creator,
                 CreationDate = chartset.CreationDate,
-                Status = chartset.Status,
                 PlayCount = chartset.PlayCount,
                 Charts = chartset.Charts
             }).SingleOrDefault(set => set.Id == id);
@@ -110,7 +108,6 @@ namespace Chartify.Services
                 chartset.CreatorId = model.CreatorId;
                 chartset.Creator = model.Creator;
                 chartset.CreationDate = model.CreationDate;
-                chartset.Status = model.Status;
                 chartset.PlayCount = model.PlayCount;
                 chartset.Charts = model.Charts;
 
@@ -127,7 +124,25 @@ namespace Chartify.Services
         {
             ChartSet? chartset = await _context.ChartSets.FindAsync(model.Id);
 
-            if(chartset != null)
+            var userFolderPath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{chartset.CreatorId}");
+            var chartsetFolderPath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{chartset.CreatorId}\{chartset.Id}");
+            string[] files = Directory.GetFiles(chartsetFolderPath, "*", SearchOption.AllDirectories);
+
+            if(Directory.Exists(chartsetFolderPath))
+            {
+                foreach(string file in files)
+                {
+                    File.Delete(file);
+                }
+                Directory.Delete(chartsetFolderPath);
+            }
+
+            if (Directory.GetFileSystemEntries(userFolderPath).Length == 0)
+            {
+                Directory.Delete(userFolderPath);
+            }
+
+            if (chartset != null)
             {
                 _context.ChartSets.Remove(chartset);
                 await _context.SaveChangesAsync();
