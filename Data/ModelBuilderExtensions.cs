@@ -46,8 +46,8 @@ namespace Chartify.Data
 
             //adding an admin user
 
-            string defaultPfpPath = "Users/ProfilePictures/default.png";
-            string defaultBannerPath = "Users/ProfileBanners/default.png";
+            string defaultPfpPath = "/Users/ProfilePictures/default.png";
+            string defaultBannerPath = "/Users/ProfileBanners/default.png";
 
             var adminUser = new User();
 

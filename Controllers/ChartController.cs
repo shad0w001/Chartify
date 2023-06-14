@@ -31,9 +31,10 @@ namespace Chartify.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ChartViewModel model)
+        public async Task<IActionResult> Create(ChartViewModel model, IFormFile file)
         {
-            await Services.CreateAsync(model);
+            string chartsetId = "a";
+            await Services.CreateAsync(model, file, chartsetId);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -75,9 +76,9 @@ namespace Chartify.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(ChartViewModel model)
+        public async Task<IActionResult> Update(ChartViewModel model, IFormFile file)
         {
-            await Services.UpdateAsync(model);
+            await Services.UpdateAsync(model, file);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

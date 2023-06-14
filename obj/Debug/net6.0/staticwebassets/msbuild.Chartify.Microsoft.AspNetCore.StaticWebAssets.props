@@ -16,6 +16,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Chartify.bundle.scp.css))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ChartSets\67a443b6-e598-444d-b30c-6eb7be2219ae\30b39bd5-de0b-43ea-a69e-760037b666ba\30b39bd5-de0b-43ea-a69e-760037b666ba_setover.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Chartify</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Chartify</BasePath>
+      <RelativePath>ChartSets/67a443b6-e598-444d-b30c-6eb7be2219ae/30b39bd5-de0b-43ea-a69e-760037b666ba/30b39bd5-de0b-43ea-a69e-760037b666ba_setover.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ChartSets\67a443b6-e598-444d-b30c-6eb7be2219ae\30b39bd5-de0b-43ea-a69e-760037b666ba\30b39bd5-de0b-43ea-a69e-760037b666ba_setover.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\css\site.css))">
       <SourceType>Package</SourceType>
       <SourceId>Chartify</SourceId>

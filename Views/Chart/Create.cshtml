@@ -1,13 +1,13 @@
 ﻿@model Chartify.ViewModels.ChartViewModel
 
-<form method="post" asp-action="Create">
+<form method="post" asp-action="Create" enctype="multipart/form-data" runat="server">
     <div class="container">
         <div class="col-md-12 col-lg-12">
             <article class="post vt-post">
                 <div class="row">
                     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
                         <div class="caption">
-                            <p><label asp-for="DifficultyName">Name:</label></p>
+                            <p><label asp-for="DifficultyName">Name of the Chart:</label></p>
                             <input asp-for="DifficultyName" class="form-control" />
 
                             <p><label asp-for="DifficultyRating">Star Rating:</label></p>
@@ -15,6 +15,12 @@
 
                             <p><label asp-for="Duration">Duration:</label></p>
                             <input asp-for="Duration" class="form-control" />
+
+                            <p><label asp-for="ObjectCount">Number of Objects:</label></p>
+                            <input asp-for="ObjectCount" class="form-control" />
+
+                            <p><label class="form-label">Upload the Difficulty File:</label></p>
+                            <input type="file" name="file" class="form-control" />
                         </div>
                     </div>
                 </div>

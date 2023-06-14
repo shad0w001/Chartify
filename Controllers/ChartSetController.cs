@@ -4,6 +4,7 @@ using Chartify.Services;
 using Chartify.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Chartify.Controllers
@@ -28,7 +29,7 @@ namespace Chartify.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<ChartSetViewModel> chartests = Services.GetAll();
+            var chartests = Services.GetAll();
 
             return View(chartests);
         }

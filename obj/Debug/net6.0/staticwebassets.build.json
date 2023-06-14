@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9A+HQdnvQBbtlmFupV1cZDIS/rp+1ioRqiiP2vaE9GQ=",
+  "Hash": "pqzfvahiY/LH93gHWgInov/B6GmO9AuFftK8A/OPYJ4=",
   "Source": "Chartify",
   "BasePath": "_content/Chartify",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chartify.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\ChartSets\\67a443b6-e598-444d-b30c-6eb7be2219ae\\30b39bd5-de0b-43ea-a69e-760037b666ba\\30b39bd5-de0b-43ea-a69e-760037b666ba_setover.png",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "ChartSets/67a443b6-e598-444d-b30c-6eb7be2219ae/30b39bd5-de0b-43ea-a69e-760037b666ba/30b39bd5-de0b-43ea-a69e-760037b666ba_setover.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ChartSets\\67a443b6-e598-444d-b30c-6eb7be2219ae\\30b39bd5-de0b-43ea-a69e-760037b666ba\\30b39bd5-de0b-43ea-a69e-760037b666ba_setover.png"
     },
     {
       "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\css\\site.css",

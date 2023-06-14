@@ -2,6 +2,7 @@
 using Chartify.Interfaces;
 using Chartify.Models;
 using Chartify.ViewModels;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Runtime.InteropServices;
 
@@ -10,9 +11,11 @@ namespace Chartify.Services
     public class ChartServices : IChartServices
     {
         private readonly ApplicationDbContext _context;
-        public ChartServices(ApplicationDbContext post)
+        private readonly IWebHostEnvironment _environment;
+        public ChartServices(ApplicationDbContext post, IWebHostEnvironment environment)
         {
             _context = post;
+            _environment = environment;
         }
         public List<ChartViewModel> GetAll()
         {
@@ -28,7 +31,7 @@ namespace Chartify.Services
                 ChartSet = chart.ChartSet
             }).ToList();
         }
-        public async Task CreateAsync(ChartViewModel model)
+        public async Task CreateAsync(ChartViewModel model, IFormFile file, string chartsetId)
         {
             Chart chart = new()
             {
@@ -38,12 +41,52 @@ namespace Chartify.Services
                 CreationDate = model.CreationDate,
                 Duration = model.Duration,
                 ObjectCount = model.ObjectCount,
-                FilePath = model.FilePath,
-                ChartSet = model.ChartSet
             };
 
+            ChartSet? chartset = _context.ChartSets.FindAsync(chartsetId).Result;
+
+            if (chartset != null)
+            {
+                chart.ChartSet = chartset;
+            }
+
+            if (file != null)
+            {
+                UploadFile(chart, file).ToString();
+            }
+
             await _context.Charts.AddAsync(chart);
+
+            ChartsOfSets chartOfSet = new ChartsOfSets()
+            {
+                ChartId = chart.Id,
+                Chart = chart,
+                ChartSetId = chart.ChartSet.Id,
+                ChartSet = chart.ChartSet
+            };
+            await _context.ChartsOfSets.AddAsync(chartOfSet);
+
             await _context.SaveChangesAsync();
+        }
+        public async Task<string> UploadFile(Chart chart, IFormFile file)
+        {
+            var folderPath = Path.Combine(_environment.WebRootPath, $@"Charts/{chart.ChartSet.Id}");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            var dbFilePath = $@"Charts/{chart.ChartSet.Id}/{chart.DifficultyName}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(_environment.WebRootPath, dbFilePath);
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+            using var fileStream = new FileStream(filePath, FileMode.Create);
+            await file.CopyToAsync(fileStream);
+            chart.FilePath = $"/{dbFilePath}";
+            return dbFilePath;
         }
         public ChartViewModel GetDetailsById(string id)
         {
@@ -61,7 +104,7 @@ namespace Chartify.Services
 
             return model;
         }
-        public async Task UpdateAsync(ChartViewModel model)
+        public async Task UpdateAsync(ChartViewModel model, IFormFile file)
         {
             Chart? chart = await _context.Charts.FindAsync(model.Id);
 
@@ -73,8 +116,12 @@ namespace Chartify.Services
                 chart.CreationDate = model.CreationDate;
                 chart.Duration = model.Duration;
                 chart.ObjectCount = model.ObjectCount;
-                chart.FilePath = model.FilePath;
                 chart.ChartSet = model.ChartSet;
+
+                if(file != null)
+                {
+                    UploadFile(chart, file).ToString();
+                }
 
                 _context.Charts.Update(chart);
                 await _context.SaveChangesAsync();

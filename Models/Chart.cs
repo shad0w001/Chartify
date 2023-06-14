@@ -11,6 +11,10 @@ namespace Chartify.Models
         public TimeSpan Duration { get; set; }
         public int ObjectCount { get; set; }
         public string FilePath { get; set; }
+
+        //
+        public string ChartSetId { get; set; }
+        [ForeignKey("ChartSetId")]
         public ChartSet ChartSet { get; set; }
 
     }

@@ -9,15 +9,34 @@
 <h4>Game</h4>
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="Update">
+        <form method="post" asp-action="Update" enctype="multipart/form-data" runat="server">
             <div class="container">
                 <div class="col-md-12 col-lg-12">
                     <article class="post vt-post">
                         <div class="row">
                             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
                                 <div class="caption">
-                                    <p><label for="Title" class="form-label">Title:</label></p>
-                                    <input type="text" class="form-control" asp-for="Title"/>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <h3>Admin Only settings</h3>
+
+                                        <p><label for="Price" class="form-label">Creation Date:</label></p>
+                                        <input type="text" class="form-control" asp-for="CreationDate" />
+
+                                        <p><label asp-for="PlayCount">Play Count:</label></p>
+                                        <input asp-for="PlayCount" class="form-control" />
+                                    }
+                                    <p><label asp-for="Title">Title:</label></p>
+                                    <input asp-for="Title" class="form-control" />
+
+                                    <p><label asp-for="Artist">Artist:</label></p>
+                                    <input asp-for="Artist" class="form-control" />
+
+                                    <p><label class="form-label">Upload a Cover Image:</label></p>
+                                    <input type="file" name="file" class="form-control" />
+
+                                    <p><label asp-for="Description">Description:</label></p>
+                                    <input asp-for="Description" class="form-control" />
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System;
 using System.Runtime.InteropServices;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chartify.Services
 {
@@ -51,14 +52,16 @@ namespace Chartify.Services
                 Charts = new List<Chart>()
             };
 
+            if (file != null)
+            {
+                await UploadCover(chartset, file);
+            }
+
             if (user != null)
             {
                 chartset.Creator = user;
-            }
-
-            if (file != null)
-            {
-                chartset.CoverPath = UploadCover(chartset, file).ToString();
+                user.ChartSets.Add(chartset);
+                _context.Users.Update(user);
             }
 
             await _context.ChartSets.AddAsync(chartset);
@@ -66,16 +69,23 @@ namespace Chartify.Services
         }
         public async Task<string> UploadCover(ChartSet chartset, IFormFile file)
         {
-            var folderPath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{chartset.CreatorId}\{chartset.Id}");
+            var folderPath = Path.Combine(_environment.WebRootPath, $@"ChartSets/{chartset.CreatorId}/{chartset.Id}");
             if(!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
 
-            var filePath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\ChartSets\{chartset.CreatorId}\{chartset.Id}", chartset.Id + "_setcover" + $"{Path.GetExtension(file.FileName)}");
+            var dbFilePath = $@"ChartSets/{chartset.CreatorId}/{chartset.Id}/{chartset.Id}_setcover{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(_environment.WebRootPath, dbFilePath);
+            
+            if(File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
             using var fileStream = new FileStream(filePath, FileMode.Create);
             await file.CopyToAsync(fileStream);
-            return filePath;
+            chartset.CoverPath = $"/{dbFilePath}";
+            return dbFilePath;
         }
         public ChartSetViewModel GetDetailsById(string id)
         {
@@ -113,7 +123,7 @@ namespace Chartify.Services
 
                 if (file != null)
                 {
-                    chartset.CoverPath = UploadCover(chartset, file).ToString();
+                    await UploadCover(chartset, file);
                 }
 
                 _context.ChartSets.Update(chartset);
