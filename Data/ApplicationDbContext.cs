@@ -17,7 +17,7 @@ namespace Chartify.Data
         public DbSet<ChartsOfSets> ChartsOfSets { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(".;Database=Chartify;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=.;Database=Chartify;Trusted_Connection=True;TrustServerCertificate=True;");
             //insert your sql server in place of the dot
         }
         protected override void OnModelCreating(ModelBuilder builder)
