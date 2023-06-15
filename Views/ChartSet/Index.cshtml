@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="@item.CoverPath" max-width="100%" alt="@item.Artist - @item.Title">
+                        <img src="@item.CoverPath" width="540px" alt="@item.Artist - @item.Title">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -47,4 +47,4 @@
     }
 </div>
 
-@*@await Html.PartialAsync("_CreateItem", "ChartSets") *@
+@await Html.PartialAsync("_CreateItem", "ChartSet") 

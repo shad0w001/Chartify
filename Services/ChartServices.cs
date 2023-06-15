@@ -2,6 +2,7 @@
 using Chartify.Interfaces;
 using Chartify.Models;
 using Chartify.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Runtime.InteropServices;
@@ -19,7 +20,8 @@ namespace Chartify.Services
         }
         public List<ChartViewModel> GetAll()
         {
-            return _context.Charts.Select(chart => new ChartViewModel()
+            return _context.Charts.Include(c => c.ChartSet)
+                .Select(chart => new ChartViewModel()
             {
                 Id = chart.Id,
                 DifficultyName = chart.DifficultyName,
@@ -28,10 +30,11 @@ namespace Chartify.Services
                 Duration = chart.Duration,
                 ObjectCount = chart.ObjectCount,
                 FilePath = chart.FilePath,
+                ChartSetId = chart.ChartSetId,
                 ChartSet = chart.ChartSet
             }).ToList();
         }
-        public async Task CreateAsync(ChartViewModel model, IFormFile file, string chartsetId)
+        public async Task CreateAsync(ChartViewModel model, IFormFile file)
         {
             Chart chart = new()
             {
@@ -43,10 +46,11 @@ namespace Chartify.Services
                 ObjectCount = model.ObjectCount,
             };
 
-            ChartSet? chartset = _context.ChartSets.FindAsync(chartsetId).Result;
+            ChartSet? chartset = _context.ChartSets.FindAsync(model.ChartSetId).Result;
 
             if (chartset != null)
             {
+                chart.ChartSetId = model.ChartSetId;
                 chart.ChartSet = chartset;
             }
 
@@ -56,27 +60,17 @@ namespace Chartify.Services
             }
 
             await _context.Charts.AddAsync(chart);
-
-            ChartsOfSets chartOfSet = new ChartsOfSets()
-            {
-                ChartId = chart.Id,
-                Chart = chart,
-                ChartSetId = chart.ChartSet.Id,
-                ChartSet = chart.ChartSet
-            };
-            await _context.ChartsOfSets.AddAsync(chartOfSet);
-
             await _context.SaveChangesAsync();
         }
         public async Task<string> UploadFile(Chart chart, IFormFile file)
         {
-            var folderPath = Path.Combine(_environment.WebRootPath, $@"Charts/{chart.ChartSet.Id}");
+            var folderPath = Path.Combine(_environment.WebRootPath, $@"Charts/{chart.ChartSetId}");
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
 
-            var dbFilePath = $@"Charts/{chart.ChartSet.Id}/{chart.DifficultyName}{Path.GetExtension(file.FileName)}";
+            var dbFilePath = $@"Charts/{chart.ChartSetId}/{chart.DifficultyName}{Path.GetExtension(file.FileName)}";
             var filePath = Path.Combine(_environment.WebRootPath, dbFilePath);
 
             if (File.Exists(filePath))
@@ -99,6 +93,7 @@ namespace Chartify.Services
                 Duration = chart.Duration,
                 ObjectCount = chart.ObjectCount,
                 FilePath = chart.FilePath,
+                ChartSetId = chart.ChartSetId,
                 ChartSet = chart.ChartSet
             }).SingleOrDefault(set => set.Id == id);
 
@@ -116,6 +111,7 @@ namespace Chartify.Services
                 chart.CreationDate = model.CreationDate;
                 chart.Duration = model.Duration;
                 chart.ObjectCount = model.ObjectCount;
+                chart.ChartSetId = model.ChartSetId;
                 chart.ChartSet = model.ChartSet;
 
                 if(file != null)
@@ -131,7 +127,24 @@ namespace Chartify.Services
         {
             Chart? chart = await _context.Charts.FindAsync(model.Id);
 
-            if(chart != null)
+            var setFolderPath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\Charts\{chart.ChartSetId}");
+            string[] files = Directory.GetFiles(setFolderPath, "*", SearchOption.AllDirectories);
+
+            if (Directory.Exists(setFolderPath))
+            {
+                foreach (string file in files)
+                {
+                    File.Delete(file);
+                }
+                Directory.Delete(setFolderPath);
+            }
+
+            if (Directory.GetFileSystemEntries(setFolderPath).Length == 0)
+            {
+                Directory.Delete(setFolderPath);
+            }
+
+            if (chart != null)
             {
                 _context.Charts.Remove(chart);
                 await _context.SaveChangesAsync();

@@ -10,8 +10,6 @@ namespace Chartify.Models
         public string ProfileBannerPath { get; set; } = "Users/ProfileBanners/default.png";
 
         //
-        public List<User>? Subscribers { get; set; } = new List<User>();
-        public List<User>? SubscribedTo { get; set; } = new List<User>();
         public List<ChartSet>? ChartSets { get; set; } = new List<ChartSet>();
         public User() : base() { }
     }

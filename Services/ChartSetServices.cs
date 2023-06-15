@@ -8,6 +8,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Chartify.Services
 {
@@ -34,7 +35,35 @@ namespace Chartify.Services
                 CreationDate = chartset.CreationDate,
                 PlayCount = chartset.PlayCount,
                 Charts = chartset.Charts
+            }).OrderBy(chartset => chartset.CreationDate).ToList();
+        }
+        public List<ChartSetViewModel> GetUserChartSets(string currentUserId)
+        {
+            return _context.ChartSets.Select(chartset => new ChartSetViewModel()
+            {
+                Id = chartset.Id,
+                CoverPath = chartset.CoverPath,
+                Artist = chartset.Artist,
+                Title = chartset.Title,
+                Description = chartset.Description,
+                CreatorId = chartset.CreatorId,
+                Creator = chartset.Creator,
+                CreationDate = chartset.CreationDate,
+                PlayCount = chartset.PlayCount,
+                Charts = chartset.Charts
+            }).Where(c => c.CreatorId == currentUserId).ToList();
+        }
+        public List<SelectListItem> GetChartSetList(List<ChartSetViewModel> chartsets)
+        {
+            var list = new List<SelectListItem>();
+
+            list = chartsets.Select(chartset => new SelectListItem()
+            {
+                Value = chartset.Id,
+                Text = $"{chartset.Artist} - {chartset.Title}, made by {chartset.Creator.UserName}",
             }).ToList();
+
+            return list;
         }
         public async Task CreateAsync(ChartSetViewModel model, IFormFile file, string currentUserId)
         {

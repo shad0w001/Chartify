@@ -20,8 +20,8 @@
                                     {
                                         <h3>Admin Only settings</h3>
 
-                                        <p><label for="Price" class="form-label">Creation Date:</label></p>
-                                        <input type="text" class="form-control" asp-for="CreationDate" />
+                                        <p><label asp-for="CreationDate">Creation Date:</label></p>
+                                        <input type="date" asp-for="CreationDate" class="form-control" />
 
                                         <p><label asp-for="PlayCount">Play Count:</label></p>
                                         <input asp-for="PlayCount" class="form-control" />
@@ -32,8 +32,8 @@
                                     <p><label asp-for="Artist">Artist:</label></p>
                                     <input asp-for="Artist" class="form-control" />
 
-                                    <p><label class="form-label">Upload a Cover Image:</label></p>
-                                    <input type="file" name="file" class="form-control" />
+                                    <p><label class="form-label" asp-for="CoverPath">Upload a Cover:</label></p>
+                                    <input asp-for="CoverPath" type="file" name="file" class="form-control" />
 
                                     <p><label asp-for="Description">Description:</label></p>
                                     <input asp-for="Description" class="form-control" />

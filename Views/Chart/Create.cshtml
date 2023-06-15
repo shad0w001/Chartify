@@ -7,6 +7,9 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
                         <div class="caption">
+                            <p><label asp-for="ChartSetId">ChartSet:</label></p>
+                            <select asp-for="ChartSetId" class="form-control" asp-items="ViewBag.ChartSets"></select>
+
                             <p><label asp-for="DifficultyName">Name of the Chart:</label></p>
                             <input asp-for="DifficultyName" class="form-control" />
 

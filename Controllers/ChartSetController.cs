@@ -90,7 +90,7 @@ namespace Chartify.Controllers
         {
             await Services.UpdateAsync(model, file);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]

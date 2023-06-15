@@ -1,6 +1,8 @@
 ﻿using Chartify.Data;
+using Chartify.Models;
 using Chartify.Services;
 using Chartify.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chartify.Controllers
@@ -8,18 +10,27 @@ namespace Chartify.Controllers
     public class ChartController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         public ChartServices Services { get; set; }
+        public ChartSetServices _csServices { get; set; }
 
-        public ChartController(ApplicationDbContext context, ChartServices services)
+        public ChartController(ApplicationDbContext context, 
+            ChartServices services, 
+            ChartSetServices csServices,
+            UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
             _context = context;
             Services = services;
-
+            _csServices = csServices;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         [HttpGet]
         public IActionResult Index()
         {
-            List<ChartViewModel> charts = new List<ChartViewModel>();
+            List<ChartViewModel> charts = Services.GetAll();
 
             return View(charts);
         }
@@ -27,14 +38,22 @@ namespace Chartify.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            if (User.IsInRole("Admin"))
+            {
+                ViewBag.ChartSets = _csServices.GetChartSetList(_csServices.GetAll());
+            }
+            else
+            {
+                string currentUserId = _userManager.GetUserId(User);
+                ViewBag.ChartSets = _csServices.GetChartSetList(_csServices.GetUserChartSets(currentUserId));
+            }            
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(ChartViewModel model, IFormFile file)
         {
-            string chartsetId = "a";
-            await Services.CreateAsync(model, file, chartsetId);
+            await Services.CreateAsync(model, file);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -72,6 +91,15 @@ namespace Chartify.Controllers
                 return NotFound();
             }
 
+            if (User.IsInRole("Admin"))
+            {
+                ViewBag.ChartSets = _csServices.GetChartSetList(_csServices.GetAll());
+            }
+            else
+            {
+                string currentUserId = _userManager.GetUserId(User);
+                ViewBag.ChartSets = _csServices.GetChartSetList(_csServices.GetUserChartSets(currentUserId));
+            }
             return View(model);
         }
 
