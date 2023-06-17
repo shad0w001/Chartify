@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zVQ6IPJPPcW+UJmSQg8///F/3xEa0Df9OHPtTwS8tN4=",
+  "Hash": "7iff/iPJC9DigIEJIWnCB2cVufN6V5/LHZlrliVdESA=",
   "Source": "Chartify",
   "BasePath": "_content/Chartify",
   "Mode": "Default",
@@ -1071,12 +1071,12 @@
       "OriginalItemSpec": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chartify.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\637d827f-25fb-48c9-89b8-8b5518f7eb5a\\xdsgfdfhk",
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\downloadtest",
       "SourceId": "Chartify",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
       "BasePath": "_content/Chartify",
-      "RelativePath": "Charts/637d827f-25fb-48c9-89b8-8b5518f7eb5a/xdsgfdfhk",
+      "RelativePath": "Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/downloadtest",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1085,15 +1085,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Charts\\637d827f-25fb-48c9-89b8-8b5518f7eb5a\\xdsgfdfhk"
+      "OriginalItemSpec": "wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\downloadtest"
     },
     {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\637d827f-25fb-48c9-89b8-8b5518f7eb5a\\xdsgfdfhk.txt",
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png",
       "SourceId": "Chartify",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
       "BasePath": "_content/Chartify",
-      "RelativePath": "Charts/637d827f-25fb-48c9-89b8-8b5518f7eb5a/xdsgfdfhk.txt",
+      "RelativePath": "ChartSets/017c5448-26cd-4727-81b0-50d22b312372/238723d5-4b14-42f0-acdc-78a4aa5171ec/238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1102,41 +1102,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Charts\\637d827f-25fb-48c9-89b8-8b5518f7eb5a\\xdsgfdfhk.txt"
-    },
-    {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\6c61940a-efa9-46bc-940f-3beb9d78acec\\aaa",
-      "SourceId": "Chartify",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
-      "BasePath": "_content/Chartify",
-      "RelativePath": "Charts/6c61940a-efa9-46bc-940f-3beb9d78acec/aaa",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Charts\\6c61940a-efa9-46bc-940f-3beb9d78acec\\aaa"
-    },
-    {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\8013878f-f544-4a9f-b08d-ce5d38e0bfe4\\sgdsgsji",
-      "SourceId": "Chartify",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
-      "BasePath": "_content/Chartify",
-      "RelativePath": "Charts/8013878f-f544-4a9f-b08d-ce5d38e0bfe4/sgdsgsji",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Charts\\8013878f-f544-4a9f-b08d-ce5d38e0bfe4\\sgdsgsji"
+      "OriginalItemSpec": "wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png"
     },
     {
       "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\css\\site.css",

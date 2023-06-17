@@ -75,6 +75,23 @@ namespace Chartify.Controllers
 
             return View(model);
         }
+        [HttpPost]
+        public async Task<IActionResult> Download(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ChartViewModel model = Services.GetDetailsById(id);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return await Services.DownloadFile(model, this);
+        }
 
         [HttpGet]
         public IActionResult Update(string? id)

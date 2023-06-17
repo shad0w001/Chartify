@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Runtime.InteropServices;
+using System.IO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Chartify.Services
 {
@@ -56,7 +59,7 @@ namespace Chartify.Services
 
             if (file != null)
             {
-                UploadFile(chart, file).ToString();
+                await UploadFile(chart, file);
             }
 
             await _context.Charts.AddAsync(chart);
@@ -81,6 +84,20 @@ namespace Chartify.Services
             await file.CopyToAsync(fileStream);
             chart.FilePath = $"/{dbFilePath}";
             return dbFilePath;
+        }
+        public async Task<FileContentResult> DownloadFile(ChartViewModel model, ControllerBase controller)
+        {
+            Chart? chart = _context.Charts.Find(model.Id);
+
+            var filePath = $@"Charts/{chart.ChartSetId}/{chart.DifficultyName}";
+            var fullPath = Path.Combine(_environment.WebRootPath, filePath);
+
+            return controller.File(File.ReadAllBytes(fullPath), "application/octet-stream", Path.GetFileName(fullPath));
+
+            //_response.ContentType = "application/octet-stream";
+            //_response.Headers.Append("Content-Disposition", "attachment; filename=" + fullPath + Path.GetExtension(chart.FilePath));
+            //await _response.SendFileAsync(fullPath);
+            //await _response.CompleteAsync();
         }
         public ChartViewModel GetDetailsById(string id)
         {
@@ -116,7 +133,7 @@ namespace Chartify.Services
 
                 if(file != null)
                 {
-                    UploadFile(chart, file).ToString();
+                    await UploadFile(chart, file);
                 }
 
                 _context.Charts.Update(chart);
@@ -136,7 +153,6 @@ namespace Chartify.Services
                 {
                     File.Delete(file);
                 }
-                Directory.Delete(setFolderPath);
             }
 
             if (Directory.GetFileSystemEntries(setFolderPath).Length == 0)
