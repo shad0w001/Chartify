@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7iff/iPJC9DigIEJIWnCB2cVufN6V5/LHZlrliVdESA=",
+  "Hash": "HGfMU0tevwH/THuATCuxTjD6i4nckNkDIEQ/nK0n0O4=",
   "Source": "Chartify",
   "BasePath": "_content/Chartify",
   "Mode": "Default",
@@ -1071,12 +1071,12 @@
       "OriginalItemSpec": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chartify.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\downloadtest",
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Easy",
       "SourceId": "Chartify",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
       "BasePath": "_content/Chartify",
-      "RelativePath": "Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/downloadtest",
+      "RelativePath": "Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/Easy",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1085,7 +1085,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\downloadtest"
+      "OriginalItemSpec": "wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Easy"
+    },
+    {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/Normal.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png"
     },
     {
       "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png",

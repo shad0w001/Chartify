@@ -33,6 +33,9 @@
     </div>
 </div>
 <div>
+    <form method="post" asp-action="Download" enctype="multipart/form-data" runat="server">
+        <input type="submit" class="btn btn-info" asp-action="Download" asp-controller="ChartSet" asp-route-id="@Model?.Id" value="Download" />
+    </form>
     <a asp-action="Update" asp-route-id="@Model?.Id">Update</a> |
     <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a> |
     <a asp-action="Index">Back to List</a>

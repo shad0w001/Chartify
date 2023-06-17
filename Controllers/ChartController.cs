@@ -90,7 +90,7 @@ namespace Chartify.Controllers
                 return NotFound();
             }
 
-            return await Services.DownloadFile(model, this);
+            return await Services.DownloadFileAsync(model, this);
         }
 
         [HttpGet]

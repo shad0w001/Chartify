@@ -85,19 +85,14 @@ namespace Chartify.Services
             chart.FilePath = $"/{dbFilePath}";
             return dbFilePath;
         }
-        public async Task<FileContentResult> DownloadFile(ChartViewModel model, ControllerBase controller)
+        public async Task<FileContentResult> DownloadFileAsync(ChartViewModel model, ControllerBase controller)
         {
-            Chart? chart = _context.Charts.Find(model.Id);
+            Chart? chart = await _context.Charts.FindAsync(model.Id);
 
             var filePath = $@"Charts/{chart.ChartSetId}/{chart.DifficultyName}";
             var fullPath = Path.Combine(_environment.WebRootPath, filePath);
 
             return controller.File(File.ReadAllBytes(fullPath), "application/octet-stream", Path.GetFileName(fullPath));
-
-            //_response.ContentType = "application/octet-stream";
-            //_response.Headers.Append("Content-Disposition", "attachment; filename=" + fullPath + Path.GetExtension(chart.FilePath));
-            //await _response.SendFileAsync(fullPath);
-            //await _response.CompleteAsync();
         }
         public ChartViewModel GetDetailsById(string id)
         {
@@ -144,20 +139,18 @@ namespace Chartify.Services
         {
             Chart? chart = await _context.Charts.FindAsync(model.Id);
 
-            var setFolderPath = Path.Combine(_environment.ContentRootPath, $@"wwwroot\Charts\{chart.ChartSetId}");
-            string[] files = Directory.GetFiles(setFolderPath, "*", SearchOption.AllDirectories);
+            var folderPath = Path.Combine(_environment.WebRootPath, $@"Charts/{chart.ChartSetId}");
+            var filePath = $@"Charts/{chart.ChartSetId}/{chart.DifficultyName}";
+            var fullPath = Path.Combine(_environment.WebRootPath, filePath);
 
-            if (Directory.Exists(setFolderPath))
+            if (Directory.Exists(folderPath))
             {
-                foreach (string file in files)
-                {
-                    File.Delete(file);
-                }
+                File.Delete(fullPath);
             }
 
-            if (Directory.GetFileSystemEntries(setFolderPath).Length == 0)
+            if (Directory.GetFileSystemEntries(folderPath).Length == 0)
             {
-                Directory.Delete(setFolderPath);
+                Directory.Delete(folderPath);
             }
 
             if (chart != null)

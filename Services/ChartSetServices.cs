@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Chartify.Services
 {
@@ -16,10 +17,12 @@ namespace Chartify.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _environment;
-        public ChartSetServices(ApplicationDbContext post, IWebHostEnvironment environment)
+        private readonly ChartServices _chartServices;
+        public ChartSetServices(ApplicationDbContext post, IWebHostEnvironment environment, ChartServices chartServices)
         {
             _context = post;
             _environment = environment;
+            _chartServices = chartServices;
         }
         public List<ChartSetViewModel> GetAll()
         {
@@ -52,6 +55,22 @@ namespace Chartify.Services
                 PlayCount = chartset.PlayCount,
                 Charts = chartset.Charts
             }).Where(c => c.CreatorId == currentUserId).ToList();
+        }
+        public List<ChartViewModel> GetChartsByChartSet(string chartsetId)
+        {
+            return _context.Charts.Include(c => c.ChartSet)
+                .Select(chart => new ChartViewModel()
+                {
+                    Id = chart.Id,
+                    DifficultyName = chart.DifficultyName,
+                    DifficultyRating = chart.DifficultyRating,
+                    CreationDate = chart.CreationDate,
+                    Duration = chart.Duration,
+                    ObjectCount = chart.ObjectCount,
+                    FilePath = chart.FilePath,
+                    ChartSetId = chart.ChartSetId,
+                    ChartSet = chart.ChartSet
+                }).Where(c => c.ChartSetId == chartsetId).ToList();
         }
         public List<SelectListItem> GetChartSetList(List<ChartSetViewModel> chartsets)
         {
@@ -95,6 +114,17 @@ namespace Chartify.Services
 
             await _context.ChartSets.AddAsync(chartset);
             await _context.SaveChangesAsync();
+        }
+        public async Task Download(ChartSetViewModel model, ControllerBase controller)
+        {
+            if(model.Charts.Count != 0)
+            {
+                foreach (var chart in model.Charts)
+                {
+                    await _chartServices.DownloadFileAsync(_chartServices.GetDetailsById(chart.Id), controller);
+                };
+            };
+            
         }
         public async Task<string> UploadCover(ChartSet chartset, IFormFile file)
         {

@@ -9,8 +9,12 @@
       "PackagePath": "staticwebassets\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png"
     },
     {
-      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\downloadtest",
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Easy",
       "PackagePath": "staticwebassets\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec"
+    },
+    {
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png",
+      "PackagePath": "staticwebassets\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png"
     },
     {
       "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\default.png",

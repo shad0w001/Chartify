@@ -48,7 +48,24 @@ namespace Chartify.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        public async Task<IActionResult> Download(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            ChartSetViewModel model = Services.GetDetailsById(id);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            await Services.Download(model, this);
+            return RedirectToAction(nameof(Index));
+        }
         [HttpGet]
         public IActionResult Details(string? id)
         {
