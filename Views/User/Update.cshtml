@@ -1,0 +1,45 @@
+﻿@model Chartify.Models.User;
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="card bg-dark mb-0 p-0 mx-auto" style="width: 60rem;">
+    <div class="card-header text-center">
+        <h2>Update your Profile Picutre or Banner</h2>
+    </div>
+    <div class="row">
+        <div class="col p-0 m-4 text-center justify-content-center form-group" style="width: 30rem;">
+            <img class="rounded float-left m-1" src="@Model.ProfilePicturePath" width="128" height="128" alt="ProfilePicture">
+            <div class="col-md-4">
+                <form class="mx-auto" method="post" asp-action="uploadProfilePicture" enctype="multipart/form-data" runat="server">
+                    <p><label class="form-label" asp-for="ProfilePicturePath">Upload a Profile Picture:</label></p>
+                    <input asp-for="ProfilePicturePath" type="file" name="file" class="form-control" />
+
+                    <div class="col">
+                        <input type="submit" name="uploadProfilePicture" class="btn btn-info" asp-action="uploadProfilePicture" asp-controller="User" asp-route-id="@Model.Id" value="Upload Profile Picture" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col p-0 m-4 text-center justify-content-center form-group" style="width: 30rem;">
+            <img class="rounded float-left m-1" src="@Model.ProfileBannerPath" width="128" height="128" alt="ProfilePicture">
+            <div class="col-md-4">
+                <form class="mx-auto" method="post" asp-action="uploadBanner" enctype="multipart/form-data" runat="server">
+                    <p><label class="form-label" asp-for="ProfileBannerPath">Upload a Profile Banner:</label></p>
+                    <input asp-for="ProfileBannerPath" type="file" name="file" class="form-control" />
+
+                    <div class="col">
+                        <input type="submit" name="uploadBanner" class="btn btn-info" asp-action="uploadBanner" asp-controller="User" asp-route-id="@Model.Id" value="Upload Banner" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

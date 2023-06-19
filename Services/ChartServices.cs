@@ -24,18 +24,17 @@ namespace Chartify.Services
         public List<ChartViewModel> GetAll()
         {
             return _context.Charts.Include(c => c.ChartSet)
-                .Select(chart => new ChartViewModel()
+            .Select(chart => new ChartViewModel()
             {
                 Id = chart.Id,
                 DifficultyName = chart.DifficultyName,
                 DifficultyRating = chart.DifficultyRating,
                 CreationDate = chart.CreationDate,
-                Duration = chart.Duration,
                 ObjectCount = chart.ObjectCount,
                 FilePath = chart.FilePath,
                 ChartSetId = chart.ChartSetId,
                 ChartSet = chart.ChartSet
-            }).ToList();
+            }).OrderBy(c => c.CreationDate).ToList();
         }
         public async Task CreateAsync(ChartViewModel model, IFormFile file)
         {
@@ -44,8 +43,7 @@ namespace Chartify.Services
                 Id = Guid.NewGuid().ToString(),
                 DifficultyName = model.DifficultyName,
                 DifficultyRating = model.DifficultyRating,
-                CreationDate = model.CreationDate,
-                Duration = model.Duration,
+                CreationDate = DateTime.Now,
                 ObjectCount = model.ObjectCount,
             };
 
@@ -58,22 +56,23 @@ namespace Chartify.Services
             }
 
             if (file != null)
-            {
-                await UploadFile(chart, file);
+                {
+                model.Id = chart.Id;
+                chart.FilePath = await UploadFile(model, file);
             }
 
             await _context.Charts.AddAsync(chart);
             await _context.SaveChangesAsync();
         }
-        public async Task<string> UploadFile(Chart chart, IFormFile file)
+        public async Task<string> UploadFile(ChartViewModel model, IFormFile file)
         {
-            var folderPath = Path.Combine(_environment.WebRootPath, $@"Charts/{chart.ChartSetId}");
+            var folderPath = Path.Combine(_environment.WebRootPath, $@"Charts/{model.ChartSetId}");
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
 
-            var dbFilePath = $@"Charts/{chart.ChartSetId}/{chart.DifficultyName}{Path.GetExtension(file.FileName)}";
+            var dbFilePath = $@"Charts/{model.ChartSetId}/{model.DifficultyName}{Path.GetExtension(file.FileName)}";
             var filePath = Path.Combine(_environment.WebRootPath, dbFilePath);
 
             if (File.Exists(filePath))
@@ -82,16 +81,23 @@ namespace Chartify.Services
             }
             using var fileStream = new FileStream(filePath, FileMode.Create);
             await file.CopyToAsync(fileStream);
-            chart.FilePath = $"/{dbFilePath}";
+            dbFilePath = $"/{dbFilePath}";
+
             return dbFilePath;
         }
         public async Task<FileContentResult> DownloadFileAsync(ChartViewModel model, ControllerBase controller)
         {
             Chart? chart = await _context.Charts.FindAsync(model.Id);
 
-            var filePath = $@"Charts/{chart.ChartSetId}/{chart.DifficultyName}";
+            var filePath = $@"Charts/{chart.ChartSetId}/{chart.DifficultyName}{Path.GetExtension(chart.FilePath)}";
             var fullPath = Path.Combine(_environment.WebRootPath, filePath);
 
+            ChartSet? chartSet = await _context.ChartSets.FindAsync(chart.ChartSetId);
+            if (chartSet != null)
+            {
+                chartSet.PlayCount += 1;
+                _context.ChartSets.Update(chartSet);
+            }
             return controller.File(File.ReadAllBytes(fullPath), "application/octet-stream", Path.GetFileName(fullPath));
         }
         public ChartViewModel GetDetailsById(string id)
@@ -102,7 +108,6 @@ namespace Chartify.Services
                 DifficultyName = chart.DifficultyName,
                 DifficultyRating = chart.DifficultyRating,
                 CreationDate = chart.CreationDate,
-                Duration = chart.Duration,
                 ObjectCount = chart.ObjectCount,
                 FilePath = chart.FilePath,
                 ChartSetId = chart.ChartSetId,
@@ -121,15 +126,9 @@ namespace Chartify.Services
                 chart.DifficultyName = model.DifficultyName;
                 chart.DifficultyRating = model.DifficultyRating;
                 chart.CreationDate = model.CreationDate;
-                chart.Duration = model.Duration;
                 chart.ObjectCount = model.ObjectCount;
                 chart.ChartSetId = model.ChartSetId;
                 chart.ChartSet = model.ChartSet;
-
-                if(file != null)
-                {
-                    await UploadFile(chart, file);
-                }
 
                 _context.Charts.Update(chart);
                 await _context.SaveChangesAsync();

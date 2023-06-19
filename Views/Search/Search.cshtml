@@ -1,0 +1,90 @@
+﻿@model SearchViewModel
+
+<h2>Search</h2>
+
+<h3>ChartSet Search Results:</h3>
+@if (Model.ChartSetResults != null && Model.ChartSetResults.Count() > 0)
+{
+    @foreach (var item in Model.ChartSetResults)
+    {
+        <div class="card bg-dark m-3 p-0" style="width: 20rem;">
+            <img class="bd-placeholder-img card-img-top" width="22rem" height="180" src="@item.CoverPath" role="img" alt="@item.Title - @item.Artist">
+            <div class="card-img-overlay text-end" style="pointer-events: none">
+                @if (item.Status == 0)
+                {
+                    <h5 class="badge rounded-pill p-2 text-bg-success card-title text-light" style="text-shadow: 2px 2px 8px #000000;">Pending</h5>
+                }
+                else if (item.Status == 1)
+                {
+                    <h5 class="badge rounded-pill p-2 text-bg-success card-title text-light" style="text-shadow: 2px 2px 8px #000000;">Approved</h5>
+                }
+                else
+                {
+
+                }
+            </div>
+            <div class="card-img-overlay text-center" style="pointer-events: none">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h5 class="card-title text-light" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;">@item.Title</h5>
+                <p class="card-text text-light" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;"><small>@item.Artist</small></p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+                @if (item.Charts.Count > 0)
+                {
+                    <li class="list-group-item text-light bg-dark">
+                        @foreach (var diff in item.Charts.OrderBy(diff => diff.DifficultyRating))
+                        {
+                            <button type="button" class="btn btn-secondary mb-1" data-toggle="tooltip" data-placement="top" title="@diff.DifficultyName"><i class="bi bi-star-fill"></i>@diff.DifficultyRating</button>
+                        }
+                    </li>
+                }
+                else
+                {
+                    <li class="list-group-item text-light bg-dark m-2">This Set has no Charts</li>
+                }
+            </ul>
+            <div class="card-body text-center text-light">
+                <a class="text-light bg-dark nav-link card-text p-0" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" asp-action="profile" asp-controller="User" asp-route-id="@item.CreatorId">Created by @item.Creator.UserName</a>
+                <p class="card-text"><small>Submitted on @item.CreationDate.ToString("dd MMM yyyy")</small></p>
+                <a asp-action="Details" asp-controller="ChartSet" asp-route-id="@item.Id" class="btn btn-outline-info">Details</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No Chartsets Found.</p>
+}
+
+<hr />
+
+<h3>User Search Results:</h3>
+@if (Model.UserResults != null && Model.UserResults.Count() > 0)
+{
+    <div class="row">
+        @foreach (var user in Model.UserResults)
+        {
+            <div class="card m-3 bg-dark text-bg-dark p-0" style="width: 18rem">
+                <img class="card-img rounded" src="@user.ProfileBannerPath" width="22rem" height="180" role="img" aria-label="P" focusable="false">
+                <div class="card-img-overlay">
+                    <div class="row-cols-md-auto">
+                        <div class="col">
+                            <img class="col" width="50" height="50" src="@user.ProfilePicturePath">
+                        </div>
+                        <div class="col">
+                            <a class="text-light nav-link card-text p-0" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" asp-action="profile" asp-controller="User" asp-route-id="@user.Id">@user.UserName</a>
+                            <p class="card-text"><small>Last seen @user.LastLoginDate.ToString("dd MMMM yyyy hh:mm tt")</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No users found.</p>
+}

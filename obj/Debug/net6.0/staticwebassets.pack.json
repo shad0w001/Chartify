@@ -5,24 +5,28 @@
       "PackagePath": "staticwebassets\\Chartify.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png",
-      "PackagePath": "staticwebassets\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png"
-    },
-    {
-      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Easy",
-      "PackagePath": "staticwebassets\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec"
-    },
-    {
-      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png",
-      "PackagePath": "staticwebassets\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png"
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\e8d004bb-3845-49a7-ab61-0c7b364f5506\\we.jpg",
+      "PackagePath": "staticwebassets\\Charts\\e8d004bb-3845-49a7-ab61-0c7b364f5506\\we.jpg"
     },
     {
       "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\default.png",
       "PackagePath": "staticwebassets\\Users\\ProfileBanners\\default.png"
     },
     {
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.png",
+      "PackagePath": "staticwebassets\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.png"
+    },
+    {
       "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfilePictures\\default.png",
       "PackagePath": "staticwebassets\\Users\\ProfilePictures\\default.png"
+    },
+    {
+      "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfilePictures\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\pfp.jpg",
+      "PackagePath": "staticwebassets\\Users\\ProfilePictures\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\pfp.jpg"
     },
     {
       "Id": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\css\\site.css",

@@ -9,7 +9,6 @@ namespace Chartify.ViewModels
         public string DifficultyName { get; set; }
         public double DifficultyRating { get; set; }
         public DateTime CreationDate { get; set; }
-        public TimeSpan Duration { get; set; }
         public int ObjectCount { get; set; }
         public string FilePath { get; set; }
         public string ChartSetId { get; set; }

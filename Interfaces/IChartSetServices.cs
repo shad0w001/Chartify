@@ -7,7 +7,7 @@ namespace Chartify.Interfaces
     {
         List<ChartSetViewModel> GetAll();
         Task CreateAsync(ChartSetViewModel model, IFormFile file, string currentUserId);
-        Task<string> UploadCover(ChartSet chartset, IFormFile file);
+        Task<string> UploadCover(ChartSetViewModel model, IFormFile file);
         ChartSetViewModel GetDetailsById(string id);
         Task UpdateAsync(ChartSetViewModel model, IFormFile file);
         Task DeleteAsync(ChartSetViewModel model);

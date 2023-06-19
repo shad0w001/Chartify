@@ -123,8 +123,11 @@ namespace Chartify.Areas.Identity.Pages.Account
                 user.Email = Input.Email;
                 user.CreationDate = DateTime.Now;
                 user.LastLoginDate = DateTime.Now;
+                user.ProfilePicturePath = "/Users/ProfilePictures/default.png";
+                user.ProfileBannerPath = "/Users/ProfileBanners/default.png";
+                user.EmailConfirmed = true;
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

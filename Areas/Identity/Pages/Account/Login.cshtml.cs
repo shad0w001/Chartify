@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Chartify.Services;
 
 namespace Chartify.Areas.Identity.Pages.Account
 {
@@ -23,12 +24,14 @@ namespace Chartify.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly UserManager<User> _userManager;
+        private readonly ChartSetServices _csServices;
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger, UserManager<User> userManager)
+        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger, UserManager<User> userManager, ChartSetServices csServices)
         {
             _signInManager = signInManager;
             _logger = logger;
             _userManager = userManager;
+            _csServices = csServices;
         }
 
         /// <summary>
@@ -115,6 +118,16 @@ namespace Chartify.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     var user = await _userManager.FindByNameAsync(Input.UserName);
+                    if(_csServices.GetUserChartSets(user.Id).Count > 0 && await _userManager.IsInRoleAsync(user, "User"))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, "User");
+                        await _userManager.AddToRoleAsync(user, "Mapper");
+                    }
+                    else if(_csServices.GetAll().Where(c => c.CreatorId == user.Id).Count() > 0 && await _userManager.IsInRoleAsync(user, "User"))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, "User");
+                        await _userManager.AddToRoleAsync(user, "Featured Artist");
+                    }
                     user.LastLoginDate = DateTime.Now;
                     await _userManager.UpdateAsync(user);
                     _logger.LogInformation("User logged in.");

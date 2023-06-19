@@ -1,44 +1,45 @@
 ﻿@model Chartify.ViewModels.ChartViewModel
 
-<form method="post" asp-action="Create" enctype="multipart/form-data" runat="server">
-    <div class="container">
-        <div class="col-md-12 col-lg-12">
-            <article class="post vt-post">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
-                        <div class="caption">
-                            <p><label asp-for="ChartSetId">ChartSet:</label></p>
-                            <select asp-for="ChartSetId" class="form-control" asp-items="ViewBag.ChartSets"></select>
-
-                            <p><label asp-for="DifficultyName">Name of the Chart:</label></p>
-                            <input asp-for="DifficultyName" class="form-control" />
-
-                            <p><label asp-for="DifficultyRating">Star Rating:</label></p>
-                            <input asp-for="DifficultyRating" class="form-control" />
-
-                            <p><label asp-for="Duration">Duration:</label></p>
-                            <input asp-for="Duration" class="form-control" />
-
-                            <p><label asp-for="ObjectCount">Number of Objects:</label></p>
-                            <input asp-for="ObjectCount" class="form-control" />
-
-                            <p><label class="form-label">Upload the Difficulty File:</label></p>
-                            <input type="file" name="file" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
+<div class="card bg-dark mb-0 mx-auto" style="width: 60rem;">
+    <div class="card-header">
+        <h2>Upload a Chart</h2>
     </div>
-
-    <div class="form-group row">
-        <div class="col-10 offset-2 row">
-            <div class="col">
-                <input type="submit" class="btn btn-info w-50" asp-action="Create" asp-controller="Chart" value="Create a Chart" />
+    <form method="post" asp-action="Create" enctype="multipart/form-data" runat="server">
+        <div class="container">
+            <div class="form-group m-3">
+                <label asp-for="ChartSetId">Chartset</label>
+                <select asp-for="ChartSetId" type="text" class="form-control bg-dark text-white" placeholder="ChartSet" asp-items="ViewBag.ChartSets"></select>
             </div>
-            <div class="col">
-                <a asp-action="Index" class="btn btn-danger w-50">Back</a>
+            <div class="form-group m-3">
+                <label asp-for="DifficultyName">Name</label>
+                <input asp-for="DifficultyName" type="text" class="form-control bg-dark text-white" placeholder="Name">
+            </div>
+            <div class="form-group m-3">
+                <label asp-for="DifficultyRating">Star Rating</label>
+                <input asp-for="DifficultyRating" class="form-control bg-dark text-white" placeholder="0.00">
+            </div>
+            <div class="form-group m-3">
+                <label asp-for="ObjectCount">Number of Objects</label>
+                <input asp-for="ObjectCount" class="form-control bg-dark text-white" placeholder="0">
+            </div>
+            <div class="form-group m-3">
+                <label for="formFile" class="form-label">File</label>
+                <input class="form-control bg-dark text-white" type="file" name="file" id="formFile">
             </div>
         </div>
-    </div>
-</form>
+
+        <div class="form-group row m-3">
+            <div class="card-body text-center text-light">
+                <input type="submit" class="btn btn-outline-info col m-3" asp-action="Create" asp-controller="Chart" value="Upload a Chart" />
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Index" class="btn btn-outline-danger col m-3">Go Back</a>
+                }
+                else
+                {
+                    <a asp-action="Index" asp-controller="ChartSet" class="btn btn-outline-danger col m-3">Go Back</a>
+                }
+            </div>
+        </div>
+    </form>
+</div>

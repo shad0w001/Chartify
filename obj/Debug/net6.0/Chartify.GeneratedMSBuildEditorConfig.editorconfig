@@ -144,6 +144,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Stiliqn/Desktop/Chartify/Views/Search/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFNlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Stiliqn/Desktop/Chartify/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -166,6 +170,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Stiliqn/Desktop/Chartify/Views/User/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Stiliqn/Desktop/Chartify/Views/User/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Stiliqn/Desktop/Chartify/Views/_ViewImports.cshtml]

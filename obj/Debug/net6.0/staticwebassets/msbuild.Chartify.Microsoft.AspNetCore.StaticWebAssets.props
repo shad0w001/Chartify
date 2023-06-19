@@ -16,12 +16,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Chartify.bundle.scp.css))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Charts\238723d5-4b14-42f0-acdc-78a4aa5171ec\Easy))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Charts\e8d004bb-3845-49a7-ab61-0c7b364f5506\we.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Chartify</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Chartify</BasePath>
-      <RelativePath>Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/Easy</RelativePath>
+      <RelativePath>Charts/e8d004bb-3845-49a7-ab61-0c7b364f5506/we.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -30,39 +30,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Charts\238723d5-4b14-42f0-acdc-78a4aa5171ec\Easy))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Charts\238723d5-4b14-42f0-acdc-78a4aa5171ec\Normal.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>Chartify</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Chartify</BasePath>
-      <RelativePath>Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/Normal.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Charts\238723d5-4b14-42f0-acdc-78a4aa5171ec\Normal.png))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ChartSets\017c5448-26cd-4727-81b0-50d22b312372\238723d5-4b14-42f0-acdc-78a4aa5171ec\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png))">
-      <SourceType>Package</SourceType>
-      <SourceId>Chartify</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/Chartify</BasePath>
-      <RelativePath>ChartSets/017c5448-26cd-4727-81b0-50d22b312372/238723d5-4b14-42f0-acdc-78a4aa5171ec/238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ChartSets\017c5448-26cd-4727-81b0-50d22b312372\238723d5-4b14-42f0-acdc-78a4aa5171ec\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Charts\e8d004bb-3845-49a7-ab61-0c7b364f5506\we.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\css\site.css))">
       <SourceType>Package</SourceType>
@@ -1040,6 +1008,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfileBanners\default.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfileBanners\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\banner.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Chartify</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Chartify</BasePath>
+      <RelativePath>Users/ProfileBanners/f17807f6-c836-4fcc-a48e-9b0dd107dcd9/banner.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfileBanners\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\banner.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfileBanners\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\banner.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Chartify</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Chartify</BasePath>
+      <RelativePath>Users/ProfileBanners/f17807f6-c836-4fcc-a48e-9b0dd107dcd9/banner.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfileBanners\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\banner.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfilePictures\default.png))">
       <SourceType>Package</SourceType>
       <SourceId>Chartify</SourceId>
@@ -1055,6 +1055,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfilePictures\default.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfilePictures\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\pfp.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Chartify</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Chartify</BasePath>
+      <RelativePath>Users/ProfilePictures/f17807f6-c836-4fcc-a48e-9b0dd107dcd9/pfp.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Users\ProfilePictures\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\pfp.jpg))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

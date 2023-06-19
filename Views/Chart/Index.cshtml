@@ -5,29 +5,44 @@
 }
 
 <h1>Index</h1>
-<div class="col">
-    <a asp-action="Create" class="btn btn-info w-50">Create a new Chart</a>
-</div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<form class="text-white">
+    <table class="table text-white">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DifficultyName)
-                </td>
-                <td>
-                    <a asp-action="Update" asp-controller="Chart" asp-route-id="@item.Id">Update</a> |
-                    <a asp-action="Details" asp-controller="Chart" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-controller="Chart" asp-route-id="@item.Id">Delete</a>
-                </td>
+                <th>Difficulty Name</th>
+                <th>Star Rating</th>
+                <th>ChartSet</th>
+                <th>Creation Date</th>
+                <th>Object Count</th>
+                <th>Options</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DifficultyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DifficultyRating)
+                    </td>
+                    <td>
+                        <a class=" nav-link card-text p-0" asp-action="Details" asp-controller="ChartSet" asp-route-id="@item.ChartSetId">@item.ChartSet.Title by @item.ChartSet.Artist</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ObjectCount)
+                    </td>
+                    <td class="row">
+                        <a asp-action="Details" class="btn btn-info col" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Update" class="btn btn-info col" asp-route-id="@item.Id">Update</a> |
+                        <a asp-action="Delete" class="btn btn-danger col" asp-route-id="@item.Id">Delete</a> |
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

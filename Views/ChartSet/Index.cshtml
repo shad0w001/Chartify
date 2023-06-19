@@ -7,41 +7,49 @@
 <div class="row" enctype="multipart/form-data" runat="server">
     @foreach (var item in Model)
     {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @item.Artist - @item.Title
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
-                                    }
-                                </h5>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="@item.CoverPath" width="540px" alt="@item.Artist - @item.Title">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <p class="card-text"><b>Created by: </b>@item.Creator.UserName</p>
-                            <p class="card-text"><b>Created on: </b>@item.CreationDate.ToString("dd MMM yyyy")</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card-footer ">
-                            <p class="card-text">
-                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Show Details
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        <div class="card bg-dark m-3 p-0" style="width: 20rem;">
+            <img class="bd-placeholder-img card-img-top" width="22rem" height="180" src="@item.CoverPath" role="img" alt="@item.Title - @item.Artist">
+            <div class="card-img-overlay text-end" style="pointer-events: none">
+                @if(item.Status == 0)
+                {
+                    <h5 class="badge rounded-pill p-2 text-bg-success card-title text-light" style="text-shadow: 2px 2px 8px #000000;">Pending</h5>
+                }
+                else if(item.Status == 1)
+                {
+                    <h5 class="badge rounded-pill p-2 text-bg-success card-title text-light" style="text-shadow: 2px 2px 8px #000000;">Approved</h5>
+                }
+                else
+                {
+                    
+                }
+            </div>
+            <div class="card-img-overlay text-center" style="pointer-events: none">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h5 class="card-title text-light" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;">@item.Title</h5>
+                <p class="card-text text-light" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;"><small>@item.Artist</small></p>
+            </div>
+            <ul class="list-group list-group-flush text-center">
+                @if(item.Charts.Count > 0)
+                {
+                    <li class="list-group-item text-light bg-dark">
+                       @foreach (var diff in item.Charts.OrderBy(diff => diff.DifficultyRating))
+                       {
+                            <button type="button" class="btn btn-secondary mb-1" data-toggle="tooltip" data-placement="top" title="@diff.DifficultyName"><i class="bi bi-star-fill"></i>@diff.DifficultyRating</button>
+                       }
+                    </li>
+                }
+                else
+                {
+                    <li class="list-group-item text-light bg-dark m-2">This Set has no Charts</li>
+                }                
+            </ul>
+            <div class="card-body text-center text-light">
+                <a class="text-light bg-dark nav-link card-text p-0" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" asp-action="profile" asp-controller="User" asp-route-id="@item.CreatorId">Submitted by @item.Creator.UserName</a>
+                <p class="card-text"><small>Submitted on @item.CreationDate.ToString("dd MMM yyyy")</small></p>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info">Details</a>
             </div>
         </div>
     }

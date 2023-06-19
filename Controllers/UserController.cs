@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Chartify.Data;
 using Chartify.Services;
 using Microsoft.Extensions.Hosting;
+using Chartify.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Chartify.Controllers
 {
@@ -18,7 +20,7 @@ namespace Chartify.Controllers
         private readonly IUserEmailStore<User> _emailStore;
         private readonly ILogger<User> _logger;
         private readonly IEmailSender _emailSender;
-        public UserServices _services;
+        private readonly UserServices _services;
 
         private IUserEmailStore<User> GetEmailStore()
         {
@@ -86,8 +88,74 @@ namespace Chartify.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.UserRoles = userRoles;
+            user.ChartSets = _services.GetChartsetsForUserProfile(user.Id);
+            return View(user);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("uploadProfilePicture")]
+        public async Task<IActionResult> UploadProfilePicture(string? id, IFormFile file)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            User user = _services.GetUserById(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.ProfilePicturePath = await _services.UploadProfilePicture(user, file);
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("uploadBanner")]
+        public async Task<IActionResult> UploadBanner(string? id, IFormFile file)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            User user = _services.GetUserById(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.ProfileBannerPath = await _services.UploadBanner(user, file);
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("update")]
+        public IActionResult Update(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = _services.GetUserById(id);
+
+            if (user == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View(user);
         }
 
     }
+
 }

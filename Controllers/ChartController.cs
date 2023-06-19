@@ -2,6 +2,7 @@
 using Chartify.Models;
 using Chartify.Services;
 using Chartify.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,7 @@ namespace Chartify.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             if (User.IsInRole("Admin"))
@@ -51,11 +53,40 @@ namespace Chartify.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(ChartViewModel model, IFormFile file)
         {
             await Services.CreateAsync(model, file);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "ChartSet");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UploadFile(string? id, IFormFile file)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ChartViewModel model = Services.GetDetailsById(id);
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            Chart? chart = await _context.Charts.FindAsync(id);
+
+            if (chart != null)
+            {
+                chart.FilePath = await Services.UploadFile(model, file);
+                _context.Charts.Update(chart);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index", "ChartSet");
         }
 
         [HttpGet]
@@ -75,7 +106,9 @@ namespace Chartify.Controllers
 
             return View(model);
         }
+
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Download(string? id)
         {
             if (id == null)
@@ -94,6 +127,7 @@ namespace Chartify.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Update(string? id)
         {
             if (id == null)
@@ -121,14 +155,16 @@ namespace Chartify.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Update(ChartViewModel model, IFormFile file)
         {
             await Services.UpdateAsync(model, file);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "ChartSet");
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Delete(string? id)
         {
             if (id == null)
@@ -147,11 +183,12 @@ namespace Chartify.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Delete(ChartViewModel model)
         {
             await Services.DeleteAsync(model);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "ChartSet");
         }
     }
 }

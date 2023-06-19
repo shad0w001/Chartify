@@ -41,9 +41,6 @@ namespace Chartify.Migrations
                     b.Property<double>("DifficultyRating")
                         .HasColumnType("float");
 
-                    b.Property<TimeSpan>("Duration")
-                        .HasColumnType("time");
-
                     b.Property<string>("FilePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -67,6 +64,9 @@ namespace Chartify.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("BPM")
+                        .HasColumnType("int");
+
                     b.Property<string>("CoverPath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -82,7 +82,13 @@ namespace Chartify.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
+
                     b.Property<int>("PlayCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -125,29 +131,29 @@ namespace Chartify.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ff2019eb-f2f0-4eff-a48a-384d9a7be8ee",
-                            ConcurrencyStamp = "91ef000c-d511-4784-9efa-c143f8877009",
+                            Id = "c83e2594-3c81-4ed5-a7c2-0f962dcf1df7",
+                            ConcurrencyStamp = "4166eb2e-b370-4d45-8584-7c9160e05db8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "b0e64335-3e65-4597-afe2-0273a4d565d8",
-                            ConcurrencyStamp = "f303de62-2e1d-4c48-8a98-969bfe3f733b",
+                            Id = "ddd77c4d-718e-4305-bff5-7017fc2c29a4",
+                            ConcurrencyStamp = "a1f21287-567c-4ea7-adb4-4254f28fc70b",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "c2430274-97bb-41e7-a903-34dbb277d5cb",
-                            ConcurrencyStamp = "bcff66a1-4875-4a0e-9c82-9883da09137d",
+                            Id = "2e217304-0938-4a44-9c64-da2551cc359d",
+                            ConcurrencyStamp = "a0d0b118-54a1-4805-a51f-7924e0a2397e",
                             Name = "Featured Artist",
                             NormalizedName = "FEATURED ARTIST"
                         },
                         new
                         {
-                            Id = "28a567b9-3a28-4dfa-b7c6-6f02dc9ef8aa",
-                            ConcurrencyStamp = "9962fdba-3dd4-4a4d-bc41-c0c89a6da813",
+                            Id = "aefaf4f0-6f84-4d6a-8ae4-6a5e8deddf54",
+                            ConcurrencyStamp = "d85992a9-a9f7-4371-bd64-8d4f98ee15d0",
                             Name = "Mapper",
                             NormalizedName = "MAPPER"
                         });
@@ -175,7 +181,7 @@ namespace Chartify.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("LastLoginDate")
+                    b.Property<DateTime>("LastLoginDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("LockoutEnabled")
@@ -234,81 +240,81 @@ namespace Chartify.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "017c5448-26cd-4727-81b0-50d22b312372",
+                            Id = "36cfc697-e6d8-49ca-b9e1-1121db8043be",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e7638366-cf92-4ef6-946b-abcd7ba9ac1c",
-                            CreationDate = new DateTime(2023, 6, 15, 20, 21, 15, 540, DateTimeKind.Local).AddTicks(7055),
+                            ConcurrencyStamp = "e9c47d82-dad0-4f58-9676-f2f96172f775",
+                            CreationDate = new DateTime(2023, 6, 19, 21, 12, 55, 963, DateTimeKind.Local).AddTicks(8871),
                             Email = "a@admin.com",
                             EmailConfirmed = true,
-                            LastLoginDate = new DateTime(2023, 6, 15, 20, 21, 15, 540, DateTimeKind.Local).AddTicks(7095),
+                            LastLoginDate = new DateTime(2023, 6, 19, 21, 12, 55, 963, DateTimeKind.Local).AddTicks(8915),
                             LockoutEnabled = false,
                             NormalizedEmail = "A@ADMIN.COM",
                             NormalizedUserName = "SHAD0W",
-                            PasswordHash = "AQAAAAEAACcQAAAAENS3gmW6cpFv5tUxcuSXkvpKkhEFOv5yNlyxAEJThEW7K56PSoe7PFmX+wNipYAGzg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOj0WacnCwPeUW5crqzJvdmcFD5mbvP7wJKJGLdWphTMxeAuK+hNPV0rkgeWv0ORcQ==",
                             PhoneNumberConfirmed = false,
                             ProfileBannerPath = "/Users/ProfileBanners/default.png",
                             ProfilePicturePath = "/Users/ProfilePictures/default.png",
-                            SecurityStamp = "48814cb9-7029-4e9d-9867-e0ee6bb5263c",
+                            SecurityStamp = "ec946cac-8b14-4ab3-a7e0-3f3153767363",
                             TwoFactorEnabled = false,
                             UserName = "shad0w"
                         },
                         new
                         {
-                            Id = "eab27330-cea8-41ea-8b0b-4dd18792a304",
+                            Id = "d8a93562-93e8-4a00-9b42-e9401f01af83",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "709ff970-c1dd-4ef0-973c-c54eb209fa86",
-                            CreationDate = new DateTime(2023, 6, 15, 20, 21, 15, 543, DateTimeKind.Local).AddTicks(225),
+                            ConcurrencyStamp = "55925cec-743a-481e-af22-48e610bf1635",
+                            CreationDate = new DateTime(2023, 6, 19, 21, 12, 55, 966, DateTimeKind.Local).AddTicks(4000),
                             Email = "u@user.com",
                             EmailConfirmed = true,
-                            LastLoginDate = new DateTime(2023, 6, 15, 20, 21, 15, 543, DateTimeKind.Local).AddTicks(230),
+                            LastLoginDate = new DateTime(2023, 6, 19, 21, 12, 55, 966, DateTimeKind.Local).AddTicks(4006),
                             LockoutEnabled = false,
                             NormalizedEmail = "U@USER.COM",
                             NormalizedUserName = "ONEGAI",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH+80JNoj9CygM8k9rPUL8OUUrvoU915WvR4spEIoPxyfSI9PzCoxukOdr/vgzC8+Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKBFhCA1xAkZdH5+qRHwRvJHBg7vcvN3QYjqC8iEWC5qog1Nl97YdpTEIpc2NFPv7g==",
                             PhoneNumberConfirmed = false,
                             ProfileBannerPath = "/Users/ProfileBanners/default.png",
                             ProfilePicturePath = "/Users/ProfilePictures/default.png",
-                            SecurityStamp = "6e7e4242-da85-49ea-9b60-ef1d18ff956f",
+                            SecurityStamp = "b4543895-3d54-466f-8fdb-0493f017e654",
                             TwoFactorEnabled = false,
                             UserName = "onegai"
                         },
                         new
                         {
-                            Id = "ed14f34b-d1bc-4f05-8ff8-90514f3393bc",
+                            Id = "87009f77-b262-4a27-abdb-78df6bd4f480",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "235d9a17-fc49-48fa-9308-9d6210d3d1bd",
-                            CreationDate = new DateTime(2023, 6, 15, 20, 21, 15, 545, DateTimeKind.Local).AddTicks(3724),
+                            ConcurrencyStamp = "de20eb7f-83ca-4c6a-a256-4014c929d4aa",
+                            CreationDate = new DateTime(2023, 6, 19, 21, 12, 55, 968, DateTimeKind.Local).AddTicks(7996),
                             Email = "fa@arist.com",
                             EmailConfirmed = true,
-                            LastLoginDate = new DateTime(2023, 6, 15, 20, 21, 15, 545, DateTimeKind.Local).AddTicks(3729),
+                            LastLoginDate = new DateTime(2023, 6, 19, 21, 12, 55, 968, DateTimeKind.Local).AddTicks(8001),
                             LockoutEnabled = false,
                             NormalizedEmail = "FA@ARIST.COM",
                             NormalizedUserName = "NAMIRIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAENXnr9JKe4TH3SlEFP+M+nt129HDJcRIxPg1FmwdpUp9gtiwtKq5gPrhD0jPoSiL7w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELSFrHLeGpoYu8kn6fvAApTeY+we9tg9JpPMCEw4WW/trYfqiWJUAvEzrzAuOnuMug==",
                             PhoneNumberConfirmed = false,
                             ProfileBannerPath = "/Users/ProfileBanners/default.png",
                             ProfilePicturePath = "/Users/ProfilePictures/default.png",
-                            SecurityStamp = "2a491a6e-42b3-4545-92a7-372cda492a69",
+                            SecurityStamp = "1749ce0f-29ad-4fb2-9bf6-864ec93b0ed8",
                             TwoFactorEnabled = false,
                             UserName = "namirin"
                         },
                         new
                         {
-                            Id = "a330f7ca-4fd8-4a49-90a8-e2d8847d944c",
+                            Id = "78fac25b-75f0-4f8d-880f-c756a8464762",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1c91afd2-f04a-4af4-ac11-19242cd069f1",
-                            CreationDate = new DateTime(2023, 6, 15, 20, 21, 15, 547, DateTimeKind.Local).AddTicks(6865),
+                            ConcurrencyStamp = "0ed43529-9195-4a90-8679-ab5c5b49b3c8",
+                            CreationDate = new DateTime(2023, 6, 19, 21, 12, 55, 971, DateTimeKind.Local).AddTicks(4585),
                             Email = "m@mapper.com",
                             EmailConfirmed = true,
-                            LastLoginDate = new DateTime(2023, 6, 15, 20, 21, 15, 547, DateTimeKind.Local).AddTicks(6870),
+                            LastLoginDate = new DateTime(2023, 6, 19, 21, 12, 55, 971, DateTimeKind.Local).AddTicks(4607),
                             LockoutEnabled = false,
                             NormalizedEmail = "M@MAPPER.COM",
                             NormalizedUserName = "SOTARKS",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIQxuRTXxs/Dm+v0bMLJDwRekA0O6L3ruxTIkv/8qYZLbvjsY61xzL1rvwPxyy9efg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFZg4EefXVx+OFtRjsBj1SqsqMHThAdwLPdpuojoMY+myxmoBM8NBRZOq64BdR9y6g==",
                             PhoneNumberConfirmed = false,
                             ProfileBannerPath = "/Users/ProfileBanners/default.png",
                             ProfilePicturePath = "/Users/ProfilePictures/default.png",
-                            SecurityStamp = "4d0acc6e-e98c-4c4e-ad82-57e9d72f7063",
+                            SecurityStamp = "9fd470c6-a9c6-4d73-a35e-52227ec8cde3",
                             TwoFactorEnabled = false,
                             UserName = "Sotarks"
                         });
@@ -403,23 +409,23 @@ namespace Chartify.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "017c5448-26cd-4727-81b0-50d22b312372",
-                            RoleId = "ff2019eb-f2f0-4eff-a48a-384d9a7be8ee"
+                            UserId = "36cfc697-e6d8-49ca-b9e1-1121db8043be",
+                            RoleId = "c83e2594-3c81-4ed5-a7c2-0f962dcf1df7"
                         },
                         new
                         {
-                            UserId = "eab27330-cea8-41ea-8b0b-4dd18792a304",
-                            RoleId = "b0e64335-3e65-4597-afe2-0273a4d565d8"
+                            UserId = "d8a93562-93e8-4a00-9b42-e9401f01af83",
+                            RoleId = "ddd77c4d-718e-4305-bff5-7017fc2c29a4"
                         },
                         new
                         {
-                            UserId = "ed14f34b-d1bc-4f05-8ff8-90514f3393bc",
-                            RoleId = "c2430274-97bb-41e7-a903-34dbb277d5cb"
+                            UserId = "87009f77-b262-4a27-abdb-78df6bd4f480",
+                            RoleId = "2e217304-0938-4a44-9c64-da2551cc359d"
                         },
                         new
                         {
-                            UserId = "a330f7ca-4fd8-4a49-90a8-e2d8847d944c",
-                            RoleId = "28a567b9-3a28-4dfa-b7c6-6f02dc9ef8aa"
+                            UserId = "78fac25b-75f0-4f8d-880f-c756a8464762",
+                            RoleId = "aefaf4f0-6f84-4d6a-8ae4-6a5e8deddf54"
                         });
                 });
 

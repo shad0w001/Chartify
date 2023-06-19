@@ -17,7 +17,12 @@ namespace Chartify.ViewModels
         [Display(Name = "Song Title")]
         [Required(ErrorMessage = "Song Title is required")]
         public string Title { get; set; }
+
+        [Display(Name = "Description")]
+        [Required(ErrorMessage = "A description is required")]
         public string Description { get; set; }
+        public int Status { get; set; }
+        //0 - Pending, 1 - Approved
         public string CreatorId { get; set; }
         public virtual User Creator { get; set; }
 
@@ -26,6 +31,8 @@ namespace Chartify.ViewModels
 
         [Display(Name = "Play Count")]
         public int PlayCount { get; set; }
+        public TimeSpan Duration { get; set; }
+        public int BPM { get; set; }
         public List<Chart> Charts { get; set; } = new List<Chart>();
     }
 }

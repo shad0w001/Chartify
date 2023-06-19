@@ -4,52 +4,22 @@
     ViewData["Title"] = "All Users";
 }
 
-<h1>Index</h1>
-<form action="/u/index">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Creation Date</th>
-                <th>Last Login</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        <img src="@item.ProfilePicturePath" alt="ProfilePicture">
-                        <a class="text-dark" asp-action="profile" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.UserName)</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @if(ViewBag.UserRoles != null)
-                        {
-                            @foreach (var userRole in ViewBag.UserRoles)
-                            {
-                                @foreach (var role in userRole.Value)
-                                {
-                                    if (userRole.Key == item.UserName)
-                                    {
-                                        <p>@role</p>
-                                    }
-                                }
-                            }
-                        }                        
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreationDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastLoginDate)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</form>
+<div class="row">
+@foreach(var user in Model)
+    {
+        <div class="card m-3 bg-dark text-bg-dark p-0" style="width: 18rem">
+        <img class="card-img rounded" src="@user.ProfileBannerPath" width="22rem" height="180" role="img" aria-label="P" focusable="false">
+            <div class="card-img-overlay">
+                <div class="row-cols-md-auto">
+                    <div class="col">
+                        <img class="col" width="50" height="50" src="@user.ProfilePicturePath">
+                    </div>
+                    <div class="col">
+                        <a class="text-light nav-link card-text p-0" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" asp-action="profile" asp-controller="User" asp-route-id="@user.Id">@user.UserName</a>
+                        <p class="card-text"><small>Last seen @user.LastLoginDate.ToString("dd MMMM yyyy hh:mm tt")</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

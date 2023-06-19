@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HGfMU0tevwH/THuATCuxTjD6i4nckNkDIEQ/nK0n0O4=",
+  "Hash": "re5mkjhvjTJ/w2e+r1Q409TVzTfbwQ5S7zFzWbwP5F8=",
   "Source": "Chartify",
   "BasePath": "_content/Chartify",
   "Mode": "Default",
@@ -1071,12 +1071,12 @@
       "OriginalItemSpec": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chartify.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Easy",
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\e8d004bb-3845-49a7-ab61-0c7b364f5506\\we.jpg",
       "SourceId": "Chartify",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
       "BasePath": "_content/Chartify",
-      "RelativePath": "Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/Easy",
+      "RelativePath": "Charts/e8d004bb-3845-49a7-ab61-0c7b364f5506/we.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1085,41 +1085,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Easy"
-    },
-    {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png",
-      "SourceId": "Chartify",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
-      "BasePath": "_content/Chartify",
-      "RelativePath": "Charts/238723d5-4b14-42f0-acdc-78a4aa5171ec/Normal.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Charts\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\Normal.png"
-    },
-    {
-      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png",
-      "SourceId": "Chartify",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
-      "BasePath": "_content/Chartify",
-      "RelativePath": "ChartSets/017c5448-26cd-4727-81b0-50d22b312372/238723d5-4b14-42f0-acdc-78a4aa5171ec/238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\238723d5-4b14-42f0-acdc-78a4aa5171ec\\238723d5-4b14-42f0-acdc-78a4aa5171ec_setcover.png"
+      "OriginalItemSpec": "wwwroot\\Charts\\e8d004bb-3845-49a7-ab61-0c7b364f5506\\we.jpg"
     },
     {
       "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\css\\site.css",
@@ -2159,6 +2125,40 @@
       "OriginalItemSpec": "wwwroot\\Users\\ProfileBanners\\default.png"
     },
     {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.jpg",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "Users/ProfileBanners/f17807f6-c836-4fcc-a48e-9b0dd107dcd9/banner.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.png",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "Users/ProfileBanners/f17807f6-c836-4fcc-a48e-9b0dd107dcd9/banner.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Users\\ProfileBanners\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\banner.png"
+    },
+    {
       "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfilePictures\\default.png",
       "SourceId": "Chartify",
       "SourceType": "Discovered",
@@ -2174,6 +2174,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Users\\ProfilePictures\\default.png"
+    },
+    {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Users\\ProfilePictures\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\pfp.jpg",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "Users/ProfilePictures/f17807f6-c836-4fcc-a48e-9b0dd107dcd9/pfp.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Users\\ProfilePictures\\f17807f6-c836-4fcc-a48e-9b0dd107dcd9\\pfp.jpg"
     }
   ]
 }

@@ -4,24 +4,31 @@
     ViewData["Title"] = "Details";
 }
 
-<div>
-    <h4>Chart Details</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DifficultyName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DifficultyName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <form method="post" asp-action="Download" enctype="multipart/form-data" runat="server">
-        <input type="submit" class="btn btn-info" asp-action="Download" asp-controller="Chart" asp-route-id="@Model?.Id" value="Download" />
-    </form>
-    <a asp-action="Download" asp-route-id="@Model?.Id">Download</a> |
-    <a asp-action="Update" asp-route-id="@Model?.Id">Update</a> |
-    <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="card bg-dark text-white align-center mx-auto" style="width: 25rem;">
+    <div class="card-body text-white">
+        <h5 class="card-title">Chart Information</h5>
+    </div>
+    <div class="card-body bg-dark text-white">
+        <ul class="list-group list-group-flush text-white bg-dark">
+            <li class="list-group-item">Difficulty Name: @Html.DisplayFor(modelItem => Model.DifficultyName)</li>
+            <li class="list-group-item">Star Rating: @Html.DisplayFor(modelItem => Model.DifficultyRating)</li>
+            <li class="list-group-item"><a class=" nav-link card-text p-0" asp-action="Details" asp-controller="ChartSet" asp-route-id="@Model.ChartSetId">Chartset: @Model.ChartSet.Title by @Model.ChartSet.Artist</a></li>
+            <li class="list-group-item">Creation Date: @Html.DisplayFor(modelItem => Model.CreationDate)</li>
+            <li class="list-group-item">Object Count: @Html.DisplayFor(modelItem => Model.ObjectCount)</li>
+        </ul>
+    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="card-body text-center">
+            <a asp-action="Update" class="btn btn-info col" asp-route-id="@Model.Id">Update</a> |
+            <a asp-action="Delete" class="btn btn-danger col" asp-route-id="@Model.Id">Delete</a>
+        </div>
+    }
+    <div class="card-body text-center">
+        <form id="downloadForm" method="post" asp-action="Download" enctype="multipart/form-data" runat="server" class="row">
+            <div class="col">
+                <input type="submit" class="btn btn-info clickable-button" asp-action="Download" asp-controller="Chart" asp-route-id="@Model.Id" value="Download" form="downloadForm" name="dynamicButton" />
+            </div>
+        </form>
+    </div>
 </div>

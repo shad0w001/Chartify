@@ -4,39 +4,108 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="row" enctype="multipart/form-data" runat="server">
-    <div class="col-md-8 offset-2">
-        <div class="card mb-12">
-            <div class="row g-0">
-                <div class="col-md-12">
-                    <div class="card-header text-white bg-info">
-                        <p class="card-text">
-                            <h6 class="card-title">
-                                chartset info
-                            </h6>
-                        </p>
+
+<div class="container-fluid">
+    <div class="card bg-dark mb-0 mx-auto p-0" style="width: 50rem;">
+        <div class="card-body text-light row">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="400px" src="@Model.CoverPath" role="img" alt="@Model.Title - @Model.Artist">
+            <div class="card-body">
+                <h2 class="card-title text-light ml-1 text-center" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;">@Model.Title <small>by @Model.Artist</small></h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-auto">
+                        <img class="rounded float-left mr-0" width="50" height="50" src="@Model.Creator.ProfilePicturePath" alt="ProfilePicture">
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="@Model.CoverPath" max-width="250px" alt="@Model.Artist - @Model.Title">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h3 class="card-header">@Model.Artist - @Model.Title</h3>
-                        <p class="card-text">@Model.Description</p>
-                        <p class="card-text"><b>Creator: </b>@Model.Creator.UserName</p>
-                        <p class="card-text"><b>Start Date: </b>@Model.CreationDate.ToString("dd MMM yyyy")</p>
+                    <div class="col">
+                        <a class="text-light bg-dark nav-link card-text p-0" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;" asp-action="profile" asp-controller="User" asp-route-id="@Model.CreatorId">Created by @Model.Creator.UserName</a>
+                        <p class="card-text text-light bg-dark" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;"><small>Submitted on @Model.CreationDate.ToString("dd MMM yyyy hh:mm tt")</small></p>
+                    </div>
+                    <div class="col lh-1">
+                        @if(Model.Status == 0)
+                        {
+                            <p class="text-light bg-dark text-end">Status: Pending Approval</p>
+                        }
+                        else if(Model.Status == 1)
+                        {
+                            <p class="text-light bg-dark text-end">Status: Approved</p>
+                        }
+                        <p class="text-light bg-dark text-end">BPM: @Model.BPM</p>
+                        <p class="text-light bg-dark text-end">Duration: @Model.Duration</p>
+                        <p class="text-light bg-dark text-end">Playcount: @Model.PlayCount</p>
                     </div>
                 </div>
             </div>
+            <div class="card-body text-light text-center">
+                <h3 class="card-title text-light ml-1" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;"><small>Description:</small></h3>
+                <p class="text-light bg-dark">@Model.Description</p>
+            </div>
+            <div class="card-body text-light text-center row">
+                @if(User.IsInRole("Admin") && Model.Charts.Count > 0)
+                {
+                    <div class="col">
+                        @if(Model.Status == 0)
+                        {
+                        <form method="post" asp-action="Approve">
+                            <input type="submit" class="btn btn-info clickable-button" asp-action="Approve" asp-controller="ChartSet" asp-route-id="@Model.Id" value="Approve" form="downloadForm" name="dynamicButton" />
+                        </form>
+                        }
+                        <a asp-action="Update" asp-route-id="@Model.Id" class="col btn btn-info">Update</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="col btn btn-danger">Delete</a>
+                    </div>   
+                }
+                else if(User.Identity.Name == Model.Creator.UserName)
+                {
+                    <div class="col">
+                        <a asp-action="Update" asp-route-id="@Model.Id" class="col btn btn-info">Update</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="col btn btn-danger">Delete</a>
+                    </div>
+                }
+            </div>
+            @if(Model.Charts.Count > 0)
+            {
+                <div class="card-body text-light text-center">
+                    <h2>Download individual charts from the set.</h2>
+
+                        <form id="downloadForm" method="post" asp-action="Download" enctype="multipart/form-data" runat="server" class="row">
+                        @foreach (var chart in Model.Charts.OrderBy(chart => chart.DifficultyRating))
+                        {
+                            <div class="col">
+                                <p class="m-0"><i class="bi bi-star-fill"></i>@chart.DifficultyRating - @chart.DifficultyName</p>
+                                <a class="btn btn-info clickable-button" asp-action="Details" asp-controller="Chart" asp-route-id="@chart.Id">Details</a>
+                                <input type="submit" class="btn btn-info clickable-button" asp-action="Download" asp-controller="Chart" asp-route-id="@chart.Id" value="Download" form="downloadForm" name="dynamicButton" />
+                            </div>
+                        }
+                    </form>
+                </div>
+            }
+            <a asp-action="Index" class="col btn btn-danger">Back to List</a>
         </div>
     </div>
+
+    @if (User.IsInRole("Admin") || User.Identity.Name == Model.Creator.UserName)
+    {
+        @await Html.PartialAsync("_CreateItem", "Chart")
+    }
+    
 </div>
-<div>
-    <form method="post" asp-action="Download" enctype="multipart/form-data" runat="server">
-        <input type="submit" class="btn btn-info" asp-action="Download" asp-controller="ChartSet" asp-route-id="@Model?.Id" value="Download" />
-    </form>
-    <a asp-action="Update" asp-route-id="@Model?.Id">Update</a> |
-    <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<script>
+    function clickAllButtons(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var buttons = document.querySelectorAll('input[type="submit"].btn.btn-info.clickable-button');
+        for (var i = 0; i < buttons.length; i++) {
+            var form = buttons[i].form;
+
+            // Create a hidden input element with the button's name and value
+            var dynamicButton = document.createElement('input');
+            dynamicButton.type = 'hidden';
+            dynamicButton.name = buttons[i].name;
+            dynamicButton.value = buttons[i].value;
+            form.appendChild(dynamicButton);
+
+            form.submit(); // Submit the form associated with the button
+        }
+    }
+</script>

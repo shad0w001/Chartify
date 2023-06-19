@@ -4,34 +4,85 @@
     ViewData["Title"] = $"Profile - {Model.UserName}";
 }
 
-<div>
-    <img src="@Model.ProfileBannerPath" alt="ProfileBanner">
-    <img src="@Model.ProfilePicturePath" alt="ProfilePicture">
-    <h3>@Model.UserName</h3>
-    @if (ViewBag.UserRoles != null)
-    {
-        @foreach (var userRole in ViewBag.UserRoles)
-        {
-            @foreach (var role in userRole.Value)
-            {
-                if (userRole.Key == @Model.UserName)
+<div class="container-fluid">
+    <div class="card bg-dark mb-0 align-center mx-auto" style="width: 60rem;">
+        <img class="bd-placeholder-img card-img-top" width="100%" height="250" src="@Model.ProfileBannerPath" role="img" alt="@Model.UserName">
+        <div class="card-body text-light row">
+            <div class="col-md-auto text-center">
+                <img class="rounded float-left m-1" src="@Model.ProfilePicturePath" width="128" height="128"  alt="ProfilePicture">
+            </div>
+            <div class="col">
+                <h2 class="card-title text-light mt-5" style="text-shadow: 2px 2px 8px #000000;">@Model.UserName</h2>
+                @if (ViewBag.UserRoles != null)
                 {
-                    <h4>@role</h4>
+                    @foreach (var userRole in ViewBag.UserRoles)
+                    {
+                        @foreach (var role in userRole.Value)
+                        {
+                            if (userRole.Key == @Model.UserName)
+                            {
+                                <h5 class="card-text text-light" style="text-shadow: 2px 2px 8px #000000;">@role </h5>
+                            }
+                        }
+                    }
+                }
+            </div>
+            <div class="col mt-3">
+                <p class="text-light bg-dark text-end">Joined @Model.CreationDate.ToString("dd MMM yyyy")</p>
+                <p class="text-light bg-dark text-end">Last seen @Model.LastLoginDate.ToString("dddd, dd MMMM yyyy hh:mm tt")</p>
+                @if (User.Identity.Name == Model.UserName)
+                {
+                    <p><a class="text-light bg-dark text-end nav-link" asp-action="Update" asp-controller="User" asp-route-id="@Model.Id">Change your profile picture</a></p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="card bg-dark mb-3 align-center mx-auto" style="width: 60rem;">
+            @if(Model.ChartSets.Count > 0)
+            {
+                <h4 class="card-title text-center">This user has made @Model.ChartSets.Count chartsets</h4>
+                @foreach (var item in Model.ChartSets)
+                {
+                    <div class="card bg-dark m-3 p-0" style="width: 20rem;">
+                        <img class="bd-placeholder-img card-img-top" width="22rem" height="180" src="@item.CoverPath" role="img" alt="@item.Title - @item.Artist">
+                        <div class="card-img-overlay text-end" style="pointer-events: none">
+                            @if (item.Status == 0)
+                            {
+                                <h5 class="badge rounded-pill p-2 text-bg-success card-title text-light" style="text-shadow: 2px 2px 8px #000000;">Pending</h5>
+                            }
+                            else if (item.Status == 1)
+                            {
+                                <h5 class="badge rounded-pill p-2 text-bg-success card-title text-light" style="text-shadow: 2px 2px 8px #000000;">Approved</h5>
+                            }
+                            else
+                            {
+
+                            }
+                        </div>
+                        <div class="card-img-overlay text-center" style="pointer-events: none">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <h5 class="card-title text-light" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;">@item.Title</h5>
+                            <p class="card-text text-light" style="text-shadow: 0 0 3px #000000, 0 0 5px #000000;"><small>@item.Artist</small></p>
+                        </div>
+                        <div class="card-body text-center text-light">
+                            <p class="card-text"><small>Submitted on @item.CreationDate.ToString("dd MMM yyyy")</small></p>
+                            <a asp-action="Details" asp-controller="ChartSet" asp-route-id="@item.Id" class="btn btn-outline-info">Details</a>
+                        </div>
+                    </div>
                 }
             }
-        }
-    }
-
-    <h3>@Model.Email</h3>
-
-    <p>Accaunt created on: @Model.CreationDate</p>
-    <p>Last seen: @Model.LastLoginDate</p>
-
-    @if(User.Identity.Name == Model.UserName)
-    {
-        <p>you are you</p>
-    }
+            else
+            {
+            <h4 class="card-title text-center">This user hasn't made any chartsets.</h4>
+            }
+    </div>
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
