@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "re5mkjhvjTJ/w2e+r1Q409TVzTfbwQ5S7zFzWbwP5F8=",
+  "Hash": "tKOS7ouHU/PequkIZi4V/twufs6fuNB61thhq7mVLF8=",
   "Source": "Chartify",
   "BasePath": "_content/Chartify",
   "Mode": "Default",
@@ -1071,6 +1071,23 @@
       "OriginalItemSpec": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chartify.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\87a4d574-9114-41b7-84ba-1f9da6b07e6e\\ghgfg",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "Charts/87a4d574-9114-41b7-84ba-1f9da6b07e6e/ghgfg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Charts\\87a4d574-9114-41b7-84ba-1f9da6b07e6e\\ghgfg"
+    },
+    {
       "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\Charts\\e8d004bb-3845-49a7-ab61-0c7b364f5506\\we.jpg",
       "SourceId": "Chartify",
       "SourceType": "Discovered",
@@ -1086,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Charts\\e8d004bb-3845-49a7-ab61-0c7b364f5506\\we.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\87a4d574-9114-41b7-84ba-1f9da6b07e6e\\87a4d574-9114-41b7-84ba-1f9da6b07e6e_setcover.jpg",
+      "SourceId": "Chartify",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\",
+      "BasePath": "_content/Chartify",
+      "RelativePath": "ChartSets/017c5448-26cd-4727-81b0-50d22b312372/87a4d574-9114-41b7-84ba-1f9da6b07e6e/87a4d574-9114-41b7-84ba-1f9da6b07e6e_setcover.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ChartSets\\017c5448-26cd-4727-81b0-50d22b312372\\87a4d574-9114-41b7-84ba-1f9da6b07e6e\\87a4d574-9114-41b7-84ba-1f9da6b07e6e_setcover.jpg"
     },
     {
       "Identity": "C:\\Users\\Stiliqn\\Desktop\\Chartify\\wwwroot\\css\\site.css",
